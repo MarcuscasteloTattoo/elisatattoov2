@@ -20,22 +20,23 @@
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Jost:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Jost:wght@400;500;600&display=swap"></noscript>
 <style>
-/* Paleta Elisa Tattoo:
-   #DAC65A amarelo-dourado (botões, CTAs, destaques) · #E3E3E3 cinza-claro (fundos de seções)
-   #E0E0E0 cinza secundário (alternância) · #000000 preto (áreas escuras e textos) · #FFFFFF branco (texto sobre escuro) */
+/* Layout do modelo de referência (hero com retrato, letreiro, faixas alternadas com linhas finas, colunas de até 72rem),
+   com a paleta da Elisa Tattoo:
+   #DAC65A amarelo-dourado (botões, CTAs, destaques) · #E3E3E3 cinza-claro (fundo das seções)
+   #E0E0E0 cinza secundário (faixas alternadas) · #000000 preto (áreas escuras e textos) · #FFFFFF branco (cards e texto sobre escuro) */
 :root {
   color-scheme: light;
-  --bg: #ffffff;
+  --bg: #e3e3e3;        /* fundo da página (cinza-claro) */
+  --card: #ffffff;      /* faixa dos projetos, cards, botões redondos */
+  --soft: #e0e0e0;      /* faixas alternadas (avaliações, orçamento) e letreiro */
   --fg: #000000;
   --ink: #000000;
-  --soft: #e3e3e3;
-  --tint: #e0e0e0;
-  --muted: #555555;
+  --muted: #4f4f4f;
   --gold: #dac65a;
-  --accent: #6e621c; /* dourado escurecido: o #DAC65A não tem contraste para texto sobre fundo claro */
-  --line: #d2d2d2;
+  --accent: #6e621c;    /* dourado escurecido para texto sobre fundo claro (contraste) */
+  --line: #c9c9c9;      /* linhas finas entre as faixas */
   --hero-fg: #ffffff;
-  --hero-muted: #d9d9d9;
+  --hero-muted: #e2e2e2;
   --display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
   --body: "Jost", system-ui, -apple-system, "Segoe UI", sans-serif;
   --r: .375rem;
@@ -50,199 +51,178 @@ button { font: inherit; }
 img { max-width: 100%; display: block; }
 [hidden] { display: none !important; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-.hero :focus-visible, .quote :focus-visible, footer :focus-visible, .lightbox :focus-visible { outline-color: var(--gold); }
+.hero :focus-visible, .lightbox :focus-visible { outline-color: var(--gold); }
 .nw { white-space: nowrap; }
 
 .wrap { max-width: 72rem; margin: 0 auto; padding-inline: max(24px, env(safe-area-inset-left, 0px)) max(24px, env(safe-area-inset-right, 0px)); }
-.section { padding-block: 3.5rem; }
+.section { padding-block: 4rem; }
 @media (min-width: 768px) { .section { padding-block: 6rem; } }
-.h2 { font-size: clamp(1.75rem, 1.4rem + 1.1vw, 2.15rem); line-height: 1.15; text-align: center; }
-.lead { font-size: .875rem; color: var(--muted); text-align: center; margin: 1rem auto 0; max-width: 30rem; line-height: 1.6; }
+.h2 { font-size: 1.875rem; line-height: 1.15; text-align: center; }
+@media (min-width: 768px) { .h2 { font-size: 2.25rem; } }
+.lead { font-size: .875rem; color: var(--muted); text-align: center; margin: 1rem auto 0; max-width: 28rem; line-height: 1.6; }
 .icon { width: 1rem; height: 1rem; flex: none; }
 
-/* ---------- HERO (modelo: texto à esquerda, foto à direita) ---------- */
+/* ---------- HERO ---------- */
 .hero { position: relative; overflow: hidden; background: var(--ink); color: var(--hero-fg); }
-.hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 62% 18%; }
-/* celular: foto de fundo, escurecendo de baixo para cima para o texto */
-.hero::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, rgb(0 0 0 / .45) 0, rgb(0 0 0 / 0) 22%, rgb(0 0 0 / .15) 40%, rgb(0 0 0 / .82) 66%, #000 100%); }
-.hero-inner { position: relative; z-index: 1; min-height: 86svh; display: flex; align-items: flex-end; padding-block: 6rem 2.5rem; }
-.hero-copy { max-width: 34rem; text-align: left; }
-.brand { margin-bottom: 1.1rem; }
-/* logo da Elisa (branco, fundo transparente) */
-.brand-logo { display: block; width: auto; height: clamp(2.1rem, 1.8rem + 1vw, 2.75rem); margin: 0; }
-/* títulos mais longos que o do projeto-base ("microrrealismo", "Mikrorealismus"): tamanho ajustado para não estourar */
-.hero h1 { font-size: clamp(2.6rem, 1.5rem + 3.2vw, 4.25rem); line-height: 1.05; overflow-wrap: break-word; hyphens: manual; }
-.hero-sub { margin: 1.25rem 0 0; max-width: 26rem; font-size: clamp(.95rem, .9rem + .2vw, 1.05rem); line-height: 1.65; color: var(--hero-muted); }
-/* tablet e PC: texto do lado esquerdo, foto do lado direito */
-@media (min-width: 768px) {
-  .hero-img { left: auto; right: 0; width: 54%; object-position: 55% 16%; }
-  .hero::after { background: linear-gradient(90deg, var(--ink) 0 46%, rgb(0 0 0 / .55) 54%, rgb(0 0 0 / .08) 72%, rgb(0 0 0 / 0) 100%); }
-  .hero-inner { min-height: clamp(32rem, 44vw, 40rem); align-items: center; padding-block: 5rem; }
-  .hero-copy { width: 46%; max-width: 31rem; }
+.hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 60% 30%; }
+.hero::after { content: ""; position: absolute; inset: 0; background: rgb(0 0 0 / .62); pointer-events: none; }
+.hero-inner { position: relative; z-index: 1; min-height: 78svh; display: flex; align-items: flex-end; justify-content: center; padding-block: 5rem 3.5rem; }
+@media (min-width: 768px) { .hero-inner { min-height: 84svh; align-items: center; padding-block: 6rem; } }
+.hero-copy { max-width: 36rem; text-align: center; }
+.brand { margin-bottom: 1rem; }
+/* logo da Elisa (branco, fundo transparente) no lugar do nome em texto */
+.brand-logo { display: block; width: auto; height: 2.25rem; margin: 0 auto; }
+@media (min-width: 768px) { .brand-logo { height: 2.6rem; } }
+/* título mais longo que o do modelo ("microrrealismo", "Mikrorealismus"): tamanho limitado para não estourar */
+.hero h1 { font-size: clamp(2.6rem, 1.5rem + 3.2vw, 4.25rem); line-height: 1.05; color: var(--hero-fg); overflow-wrap: break-word; }
+.hero-sub { margin: 1.5rem auto 0; max-width: 28rem; font-size: 1rem; line-height: 1.65; color: var(--hero-muted); }
+@media (min-width: 768px) { .hero-sub { font-size: 1.125rem; } }
+/* PC: foto à direita, texto à esquerda */
+@media (min-width: 900px) {
+  .hero-img { left: auto; width: 56%; object-position: 50% 22%; }
+  .hero::after { background: linear-gradient(90deg, var(--ink) 0 44%, rgb(0 0 0 / .55) 58%, rgb(0 0 0 / .15) 100%); }
+  .hero-inner { justify-content: flex-start; }
+  .hero-copy { text-align: left; max-width: 31rem; width: 44%; }
+  .hero-sub { margin-left: 0; }
+  .brand-logo { margin: 0; }
 }
-@media (min-width: 768px) and (max-width: 1023px) { .hero h1 { font-size: 2.75rem; } .lang { top: 1rem; } }
 
 /* ---------- SELETOR DE IDIOMAS (menu suspenso) ---------- */
 .lang { position: absolute; z-index: 10; top: calc(.85rem + env(safe-area-inset-top, 0px)); right: max(16px, env(safe-area-inset-right, 0px)); }
 @media (min-width: 768px) { .lang { top: 1.25rem; right: 1.5rem; } }
-.lang-cur, .lang-opt {
-  display: inline-flex; align-items: center; gap: .45rem; cursor: pointer; color: var(--hero-fg);
-  font-size: .72rem; font-weight: 600; letter-spacing: .08em;
-}
-.lang-cur {
-  padding: .4rem .55rem .4rem .5rem; border: 1px solid rgb(255 255 255 / .22); border-radius: 999px;
-  background: rgb(0 0 0 / .55); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); transition: border-color .2s, color .2s;
-}
+.lang-cur, .lang-opt { display: inline-flex; align-items: center; gap: .45rem; cursor: pointer; color: var(--hero-fg); font-size: .72rem; font-weight: 600; letter-spacing: .08em; }
+.lang-cur { padding: .4rem .55rem .4rem .5rem; border: 1px solid rgb(255 255 255 / .22); border-radius: 999px; background: rgb(0 0 0 / .55); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); transition: border-color .2s; }
 .lang-cur:hover, .lang-cur[aria-expanded="true"] { border-color: var(--gold); }
 .lang-cur .chev { width: .9rem; height: .9rem; transition: transform .2s; }
 .lang-cur[aria-expanded="true"] .chev { transform: rotate(180deg); }
 .lang .flag { width: 1.3rem; height: .875rem; flex: none; border-radius: 2px; box-shadow: 0 0 0 1px rgb(255 255 255 / .25); }
-.lang-menu {
-  position: absolute; top: calc(100% + .45rem); right: 0; min-width: 11.5rem; margin: 0; padding: .35rem; list-style: none;
-  border: 1px solid rgb(218 198 90 / .45); border-radius: .75rem; background: rgb(0 0 0 / .92);
-  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: 0 12px 32px rgb(0 0 0 / .35);
-}
+.lang-menu { position: absolute; top: calc(100% + .45rem); right: 0; min-width: 11.5rem; margin: 0; padding: .35rem; list-style: none; border: 1px solid rgb(218 198 90 / .45); border-radius: .75rem; background: rgb(0 0 0 / .92); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: 0 12px 32px rgb(0 0 0 / .35); }
 .lang-opt { width: 100%; padding: .6rem .7rem; border: 0; border-radius: .5rem; background: none; font-size: .85rem; font-weight: 500; letter-spacing: .02em; text-align: left; }
 .lang-opt:hover, .lang-opt:focus-visible { background: rgb(255 255 255 / .1); outline: none; }
 .lang-opt[aria-checked="true"] { color: var(--gold); }
 .lang-opt .code { margin-left: auto; font-size: .68rem; font-weight: 600; letter-spacing: .1em; opacity: .6; }
 
-/* letreiro */
-.marquee { position: relative; z-index: 1; display: flex; overflow: hidden; padding-block: .65rem; background: var(--tint); }
-.marquee-track { display: flex; flex: none; gap: 2rem; padding-right: 2rem; white-space: nowrap; animation: marquee 30s linear infinite; }
-.marquee span { display: inline-flex; gap: 2rem; font-size: .68rem; font-weight: 500; letter-spacing: .3em; text-transform: uppercase; color: #1a1a1a; }
-.marquee b { color: #8a8a8a; font-weight: 400; }
+/* ---------- LETREIRO ---------- */
+.marquee { position: relative; z-index: 1; display: flex; overflow: hidden; padding-block: .75rem; background: var(--soft); border-block: 1px solid var(--line); }
+.marquee-track { display: flex; flex: none; align-items: center; gap: 2rem; padding-right: 2rem; white-space: nowrap; animation: marquee 30s linear infinite; }
+.marquee span { display: inline-flex; align-items: center; gap: 2rem; font-size: .75rem; font-weight: 500; letter-spacing: .3em; text-transform: uppercase; color: var(--muted); }
+.marquee b { color: var(--accent); font-weight: 400; }
 @keyframes marquee { to { transform: translateX(-50%); } }
 
 /* ---------- FOTOS ---------- */
 .ph { position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; overflow: hidden; border-radius: var(--r); background: var(--soft); }
 .ph img { width: 100%; height: 100%; object-fit: cover; }
 
-/* ---------- PROJETOS (carrossel contínuo) ---------- */
-.projects { background: var(--bg); }
-.projects > .section { padding-block: 3.25rem; }
-@media (min-width: 768px) { .projects > .section { padding-block: 5rem; } }
+/* ---------- PROJETOS RECENTES (faixa branca, carrossel contínuo) ---------- */
+.projects { background: var(--card); border-top: 1px solid var(--line); }
 .car-view { overflow: hidden; padding-bottom: .5rem; touch-action: pan-y; user-select: none; -webkit-user-select: none; cursor: grab; }
 .car-view.dragging { cursor: grabbing; }
 .car-track { display: flex; width: max-content; will-change: transform; }
 .car-copy { display: flex; }
-.style-card { flex: none; width: min(70vw, 16rem); padding-right: .9rem; }
+.style-card { flex: none; width: 15rem; padding-right: 1.5rem; }
 .style-card .ph { cursor: zoom-in; transition: transform .3s ease; }
 .style-card .ph:hover { transform: scale(1.03); }
-@media (min-width: 640px) { .style-card { width: 16.5rem; padding-right: 1rem; } }
-.style-card h3 { margin-top: 1rem; font-size: 1.15rem; }
-.style-card p { margin-top: .4rem; font-size: .8125rem; line-height: 1.55; color: var(--muted); }
+@media (min-width: 640px) { .style-card { width: 19rem; } }
+.style-card h3 { margin-top: 1.25rem; font-size: 1.25rem; }
+.style-card p { margin-top: .5rem; font-size: .875rem; line-height: 1.6; color: var(--muted); }
 .ctrls { margin-top: 1.25rem; display: flex; justify-content: center; gap: .75rem; }
-.ctrl { display: grid; place-items: center; width: 2.5rem; height: 2.5rem; border-radius: 999px; border: 1px solid var(--line); background: var(--bg); color: var(--fg); cursor: pointer; transition: background .2s, border-color .2s; }
+.ctrl { display: grid; place-items: center; width: 2.5rem; height: 2.5rem; border-radius: 999px; border: 1px solid var(--line); background: var(--card); color: var(--fg); cursor: pointer; transition: background .2s, border-color .2s; }
 .ctrl:hover { background: var(--gold); border-color: var(--gold); }
 .ctrl svg { width: 1.25rem; height: 1.25rem; }
 
-/* ---------- PORTFÓLIO (modelo: faixa clara, título, grade e botão abaixo) ---------- */
-.works { background: var(--soft); }
-.works .h2 { margin-bottom: 2rem; }
-@media (min-width: 768px) { .works .h2 { margin-bottom: 2.5rem; } }
-.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5rem; }
-@media (min-width: 768px) { .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .75rem; } }
-.pf { display: block; padding: 0; border: 0; background: none; border-radius: .5rem; overflow: hidden; cursor: zoom-in; }
-.pf .ph { border-radius: .5rem; transition: transform .3s ease; }
+/* ---------- PORTFÓLIO ---------- */
+.grid { margin-top: 2.5rem; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; }
+@media (min-width: 768px) { .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; } }
+.pf { display: block; padding: 0; border: 0; background: none; border-radius: .75rem; overflow: hidden; cursor: zoom-in; }
+.pf .ph { border-radius: .75rem; transition: transform .3s ease; }
 .pf:hover .ph { transform: scale(1.04); }
-.works-cta { margin-top: 2.25rem; text-align: center; }
-.btn-pill { display: inline-flex; align-items: center; gap: .55rem; padding: .85rem 1.6rem; border-radius: 999px; background: var(--gold); color: #000; text-decoration: none; font-size: .78rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; transition: transform .2s ease, filter .2s; }
-.btn-pill:hover { transform: scale(1.03); filter: brightness(1.06); }
-.btn-pill svg { width: 1.05rem; height: 1.05rem; flex: none; }
+.works-cta { margin-top: 2.5rem; display: flex; justify-content: center; }
+/* botão em pílula do modelo, na cor de CTA da Elisa */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; border: 0; border-radius: 999px; background: var(--gold); color: #000; padding: .9rem 1.75rem; font-size: .875rem; font-weight: 500; letter-spacing: .04em; text-transform: uppercase; text-decoration: none; cursor: pointer; transition: transform .2s ease, filter .2s; }
+.btn:hover { transform: scale(1.03); filter: brightness(1.05); }
+.btn svg { width: 1rem; height: 1rem; flex: none; }
 
-/* ---------- SOBRE ---------- */
-.about { display: grid; align-items: center; gap: 2.5rem; }
-@media (min-width: 768px) { .about { grid-template-columns: minmax(0, .8fr) minmax(0, 1fr); gap: 3rem; } }
-@media (min-width: 1024px) { .about { gap: 4rem; } }
-.about-img { width: 100%; max-width: 22rem; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--r); justify-self: center; }
-@media (min-width: 768px) { .about-img { max-width: 24rem; justify-self: end; } }
-.about h2 { font-size: clamp(1.875rem, 1.5rem + 1.2vw, 2.25rem); line-height: 1.15; }
-.about p { margin-top: 1.25rem; line-height: 1.7; color: var(--muted); max-width: 38rem; }
-.link { display: inline-flex; align-items: center; gap: .5rem; font-size: .875rem; font-weight: 500; color: var(--accent); text-decoration: none; text-underline-offset: 4px; }
-.link:hover { text-decoration: underline; }
-.about .link { margin-top: 1.75rem; letter-spacing: .04em; text-transform: uppercase; }
-
-/* ---------- AVALIAÇÕES ---------- */
-.reviews-band { background: var(--bg); }
-.about-band { background: var(--soft); }
-.rev-badge { display: inline-flex; align-items: center; gap: .55rem; padding: .5rem 1rem; border: 1px solid var(--line); border-radius: 999px; background: var(--bg); text-decoration: none; }
-.rev-badge:hover { border-color: var(--gold); }
-.rev-badge .gl { width: 1.35rem; height: 1.35rem; }
-.rev-badge .stars { margin: 0; color: var(--gold); }
-.rev-badge .stars svg { width: 1.05rem; height: 1.05rem; }
-.rev-num { font-size: 1.5rem; font-weight: 600; line-height: 1; font-variant-numeric: tabular-nums; color: var(--fg); }
-.rev-badge span { font-size: .8rem; font-weight: 500; color: var(--muted); }
+/* ---------- AVALIAÇÕES (faixa alternada com linhas finas) ---------- */
+.reviews-band { background: var(--soft); border-block: 1px solid var(--line); }
+.rev-badge { display: inline-flex; align-items: center; gap: .6rem; padding: .55rem 1.1rem; border: 1px solid var(--line); border-radius: 999px; background: var(--card); text-decoration: none; }
+.rev-badge:hover { border-color: var(--accent); }
+.rev-badge .gl { width: 1.5rem; height: 1.5rem; }
+.rev-badge .stars { margin: 0; color: #e0b33a; }
+.rev-badge .stars svg { width: 1.15rem; height: 1.15rem; }
+.rev-num { font-size: 1.6rem; font-weight: 600; letter-spacing: -.01em; line-height: 1; font-variant-numeric: tabular-nums; color: var(--fg); }
+.rev-badge span { font-size: .8rem; color: var(--muted); }
 .reviews { margin-top: 2.5rem; display: flex; align-items: stretch; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 1rem; scrollbar-width: none; }
 .reviews::-webkit-scrollbar { display: none; }
-/* todos os cartões com a mesma altura */
-.review { flex: none; width: 86%; height: 31rem; scroll-snap-align: start; display: flex; flex-direction: column; padding: 1.5rem; border: 1px solid var(--line); border-radius: .5rem; background: var(--bg); }
+.review { flex: none; width: 86%; min-height: 20rem; scroll-snap-align: start; display: flex; flex-direction: column; padding: 1.5rem; border: 1px solid var(--line); border-radius: .5rem; background: var(--card); }
 @media (min-width: 640px) { .review { width: calc(50% - .5rem); } }
 @media (min-width: 1024px) { .review { width: calc(33.333% - .667rem); } }
 .review-head { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: .75rem; }
-.avatar { display: grid; place-items: center; width: 2.75rem; height: 2.75rem; border-radius: 999px; background: var(--ink); color: var(--gold); font-size: .875rem; font-weight: 600; text-transform: uppercase; }
+.avatar { display: grid; place-items: center; width: 2.75rem; height: 2.75rem; border-radius: 999px; background: var(--soft); color: var(--fg); font-size: .875rem; font-weight: 600; text-transform: uppercase; }
 .review h3 { font: 500 1rem/1.3 var(--body); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .review time { display: block; margin-top: .2rem; font-size: .75rem; color: var(--muted); }
-.g-badge { display: grid; place-items: center; width: 2rem; height: 2rem; border-radius: 999px; border: 1px solid var(--line); box-shadow: 0 1px 2px rgb(0 0 0 / .08); }
+.g-badge { display: grid; place-items: center; width: 2rem; height: 2rem; border-radius: 999px; border: 1px solid var(--line); background: var(--card); box-shadow: 0 1px 2px rgb(0 0 0 / .08); }
 .g-badge svg { width: 1rem; height: 1rem; }
-.stars { display: flex; gap: .1rem; margin-top: 1.25rem; color: var(--gold); }
+.stars { display: flex; gap: .125rem; margin-top: 1.25rem; color: var(--accent); }
 .stars svg { width: 1rem; height: 1rem; }
-.review-text { margin-top: 1rem; font-size: .875rem; line-height: 1.65; min-height: 0; flex: 0 1 auto; overflow-y: auto; scrollbar-width: thin; }
-.review-text.clamp { display: -webkit-box; -webkit-line-clamp: 13; -webkit-box-orient: vertical; overflow: hidden; }
+.review-text { margin-top: 1rem; font-size: .875rem; line-height: 1.65; }
+.review-text.clamp { display: -webkit-box; -webkit-line-clamp: 9; -webkit-box-orient: vertical; overflow: hidden; }
 .review.has-photos .review-text.clamp { -webkit-line-clamp: 4; }
 .more { align-self: flex-start; margin-top: .5rem; padding: 0; border: 0; background: none; color: var(--accent); font-size: .8rem; font-weight: 500; cursor: pointer; text-underline-offset: 3px; }
 .more:hover { text-decoration: underline; }
-.review-photos { margin-top: auto; padding-top: 1rem; flex: none; height: 14rem; display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: .4rem; }
+.review-photos { margin-top: auto; padding-top: 1rem; flex: none; height: 12rem; display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: .4rem; }
 .review-photo { display: block; height: 100%; min-height: 0; padding: 0; border: 0; background: none; border-radius: .375rem; overflow: hidden; cursor: zoom-in; }
 .review-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .3s ease; }
 .review-photo:hover img { transform: scale(1.04); }
+.reviews-foot { margin-top: 2.25rem; text-align: center; }
+.link { display: inline-flex; align-items: center; gap: .5rem; font-size: .875rem; font-weight: 500; color: var(--accent); text-decoration: none; text-underline-offset: 4px; }
+.link:hover { text-decoration: underline; }
 
-/* ---------- ORÇAMENTO / AGENDAMENTO ---------- */
-.quote { background: var(--ink); color: var(--hero-fg); }
-.quote .lead { color: var(--hero-muted); }
-.quote strong { color: var(--gold); font-weight: 600; }
-.quote-box { max-width: 36rem; margin: 0 auto; }
-.arrow-down { display: inline-block; width: 1rem; height: 1rem; margin-left: .2rem; vertical-align: -.2em; color: var(--gold); animation: nudge 1.6s ease-in-out infinite; }
-@keyframes nudge { 50% { transform: translateY(3px); } }
-@media (prefers-reduced-motion: reduce) { .arrow-down { animation: none; } }
-.btn-cta {
-  display: flex; align-items: center; justify-content: center; gap: .75rem; width: 100%; margin-top: 2rem; padding: 1.1rem 1.5rem;
-  border-radius: 999px; background: var(--gold); color: #000; text-decoration: none; text-align: center;
-  font-size: 1rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; transition: transform .2s ease, filter .2s;
-}
-.btn-cta:hover { transform: scale(1.02); filter: brightness(1.08); }
-.btn-cta svg { width: 1.3rem; height: 1.3rem; flex: none; }
-@media (max-width: 440px) { .btn-cta { font-size: .85rem; letter-spacing: .03em; padding-inline: 1rem; } }
+/* ---------- SOBRE MIM (foto maior à esquerda, como no modelo) ---------- */
+.about { display: grid; align-items: center; gap: 2.5rem; }
+@media (min-width: 768px) { .about { grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: 3.5rem; } }
+@media (min-width: 1024px) { .about { gap: 5rem; } }
+.about-img { width: 100%; height: auto; aspect-ratio: 475 / 511; object-fit: cover; object-position: 50% 15%; border-radius: var(--r); }
+.about h2 { font-size: 1.875rem; line-height: 1.15; }
+@media (min-width: 768px) { .about h2 { font-size: 2.25rem; } }
+.about p { margin-top: 1.25rem; line-height: 1.7; color: var(--muted); max-width: 38rem; }
+.about .link { margin-top: 1.75rem; letter-spacing: .04em; text-transform: uppercase; }
 
 /* ---------- LOCALIZAÇÃO ---------- */
+#localizacao { border-top: 1px solid var(--line); }
 .loc { display: grid; gap: 2rem; align-items: center; }
 @media (min-width: 768px) { .loc { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 3.5rem; } }
-.loc h2 { font-size: clamp(1.875rem, 1.5rem + 1.2vw, 2.25rem); line-height: 1.15; }
+.loc h2 { font-size: 1.875rem; line-height: 1.15; }
+@media (min-width: 768px) { .loc h2 { font-size: 2.25rem; } }
 .loc-addr { margin-top: 1.25rem; display: flex; gap: .6rem; align-items: flex-start; font-style: normal; line-height: 1.6; color: var(--muted); }
-.loc-addr svg { width: 1.25rem; height: 1.25rem; flex: none; margin-top: .15rem; color: var(--accent); }
+.loc-addr svg, .loc-note svg { width: 1.25rem; height: 1.25rem; flex: none; margin-top: .15rem; color: var(--accent); }
 .loc-note { margin-top: 1rem; display: flex; gap: .6rem; align-items: flex-start; line-height: 1.6; color: var(--fg); font-weight: 500; }
 .loc-text { margin-top: 1rem; padding-left: 1.85rem; max-width: 30rem; line-height: 1.7; color: var(--muted); }
-.loc-note svg { width: 1.25rem; height: 1.25rem; flex: none; margin-top: .15rem; color: var(--accent); }
 .map { position: relative; width: 100%; aspect-ratio: 4 / 3; border-radius: .75rem; overflow: hidden; background: var(--soft); border: 1px solid var(--line); }
 .map iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 .map-ph { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .6rem; color: var(--fg); font-size: .85rem; font-weight: 500; text-decoration: none; background: radial-gradient(circle at 50% 45%, #fff 0, var(--soft) 70%); }
 .map-ph svg { width: 2.25rem; height: 2.25rem; color: var(--accent); }
 .map-ph:hover span { text-decoration: underline; text-underline-offset: 3px; }
 
-/* ---------- RODAPÉ ---------- */
-.foot-links { display: flex; flex-wrap: wrap; justify-content: center; gap: .4rem 1.25rem; font-size: .8rem; }
-.foot-links a { display: inline-flex; align-items: center; gap: .4rem; color: var(--hero-muted); text-decoration: none; transition: color .2s; }
-.foot-links a:hover { color: var(--gold); }
-.foot-links svg { width: 1rem; height: 1rem; }
-footer { background: var(--ink); color: var(--hero-fg); border-top: 1px solid rgb(218 198 90 / .3); }
-.foot { padding-block: 1.75rem; display: flex; flex-direction: column; align-items: center; gap: .35rem; text-align: center; }
-.foot-row { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: .4rem .75rem; }
-.foot > * + * { margin-top: .35rem; }
-.foot-brand img { display: block; width: auto; height: 1.75rem; }
-.copy { font-size: .7rem; color: #a8a8a8; }
+/* ---------- AGENDAMENTO (faixa alternada, como "Faça seu orçamento" no modelo) ---------- */
+.quote { background: var(--soft); border-top: 1px solid var(--line); }
+.quote-box { max-width: 36rem; margin: 0 auto; }
+.btn-cta { display: flex; align-items: center; justify-content: center; gap: .75rem; width: 100%; margin-top: 2.5rem; padding: 1.1rem 1.5rem; border-radius: 999px; background: var(--gold); color: #000; text-decoration: none; text-align: center; font-size: 1rem; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; transition: transform .2s ease, filter .2s; }
+.btn-cta:hover { transform: scale(1.02); filter: brightness(1.05); }
+.btn-cta svg { width: 1.3rem; height: 1.3rem; flex: none; }
+@media (max-width: 440px) { .btn-cta { font-size: .85rem; letter-spacing: .03em; gap: .6rem; padding-inline: 1rem; } }
+
+/* ---------- RODAPÉ (claro, marca + ícone) ---------- */
+footer { border-top: 1px solid var(--line); }
+.foot { padding-block: 2.5rem; display: flex; flex-direction: column; align-items: center; gap: 1.25rem; text-align: center; }
+.foot-row { display: flex; align-items: center; gap: .75rem; }
+.foot-brand img { display: block; width: auto; height: 1.6rem; filter: invert(1); } /* logo branco aparece em preto no fundo claro */
+.foot-ig { display: inline-grid; place-items: center; color: var(--muted); transition: color .2s; }
+.foot-ig:hover { color: var(--fg); }
+.foot-ig svg { width: 1.25rem; height: 1.25rem; }
+.copy { font-size: .75rem; color: var(--muted); }
 
 /* ---------- LIGHTBOX ---------- */
-.lightbox { position: fixed; inset: 0; z-index: 50; display: flex; align-items: center; justify-content: center; padding: 1rem; background: rgb(0 0 0 / .94); }
+.lightbox { position: fixed; inset: 0; z-index: 50; display: flex; align-items: center; justify-content: center; padding: 1rem; background: rgb(0 0 0 / .92); }
 .lb-media img { max-width: 92vw; max-height: 82vh; width: auto; height: auto; border-radius: .5rem; }
 .lb-btn { position: absolute; display: grid; place-items: center; padding: .5rem; border: 0; border-radius: 999px; background: rgb(255 255 255 / .12); color: #fff; cursor: pointer; }
 .lb-btn:hover { background: rgb(255 255 255 / .22); }
@@ -256,7 +236,7 @@ footer { background: var(--ink); color: var(--hero-fg); border-top: 1px solid rg
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .marquee-track { animation: none; }
-  .btn-cta, .pf .ph, .review-photo img { transition: none; }
+  .btn, .btn-cta, .pf .ph, .review-photo img { transition: none; }
 }
 </style>
 </head>
@@ -308,11 +288,11 @@ footer { background: var(--ink); color: var(--hero-fg); border-top: 1px solid rg
     </div>
   </section>
 
-  <section class="works" id="portfolio">
+  <section id="portfolio">
     <div class="wrap section">
       <h2 class="h2" data-t="portTitulo">Portfólio</h2>
       <div class="grid" id="grid"></div>
-      <div class="works-cta"><a class="btn-pill js-agendar" href="#" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-cal"/></svg><span data-t="orcBotao">Preencha o formulário</span></a></div>
+      <div class="works-cta"><a class="btn js-agendar" href="#" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-cal"/></svg><span data-t="orcBotao">Preencha o formulário</span></a></div>
     </div>
   </section>
 
@@ -335,13 +315,13 @@ footer { background: var(--ink); color: var(--hero-fg); border-top: 1px solid rg
           <button type="button" class="ctrl" id="rev-next" data-a="aria-label:avProx" aria-label="Próxima avaliação"><svg><use href="#i-right"/></svg></button>
         </div>
       </div>
-      <div style="margin-top:2.25rem;text-align:center">
+      <div class="reviews-foot">
         <a class="link js-maps" href="#" target="_blank" rel="noopener noreferrer"><span data-t="avLink">Ver todas as avaliações no Google</span><svg class="icon"><use href="#i-ext"/></svg></a>
       </div>
     </div>
   </section>
 
-  <section class="about-band" id="sobre">
+  <section id="sobre">
     <div class="wrap section">
     <div class="about">
       <img class="about-img" src="assets/sobre-elisa.webp" srcset="assets/sobre-elisa-480.webp 480w, assets/sobre-elisa.webp 800w" sizes="(min-width: 768px) 24rem, 22rem" width="800" height="1000" loading="lazy" decoding="async" data-a="alt:aboutAlt" alt="Retrato em preto e branco de Elisa Ceccarelli, de jaqueta de couro preta, ao lado de um bonde">
@@ -383,7 +363,7 @@ footer { background: var(--ink); color: var(--hero-fg); border-top: 1px solid rg
   <div class="wrap foot">
     <div class="foot-row">
       <p class="foot-brand"><img src="assets/logo-elisa.webp" width="449" height="90" alt="Elisa Tattoo" loading="lazy" decoding="async"></p>
-      <span class="foot-links"><a href="https://www.instagram.com/elisa.tattoo__/" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#i-ig"/></svg>@elisa.tattoo__</a></span>
+      <a class="foot-ig" href="https://www.instagram.com/elisa.tattoo__/" target="_blank" rel="noopener noreferrer" data-a="aria-label:igAria" aria-label="Elisa Tattoo no Instagram (@elisa.tattoo__)"><svg aria-hidden="true"><use href="#i-ig"/></svg></a>
     </div>
     <p class="copy">© <span id="year">2026</span> Elisa Tattoo. <span data-t="direitos">Todos os direitos reservados.</span></p>
   </div>
@@ -508,7 +488,7 @@ const TXT = {
       locTitulo: "Find us", locEnd: "Birmensdorferstrasse 114<br>8003 Zurich, Switzerland", locAviso: "Visits by consultation appointment only.", locTexto: "During the consultation, we can talk about your idea, answer your questions and develop a fully custom tattoo design.", locVerMapa: "View on Google Maps", orcBotao: "Fill out the form", direitos: "All rights reserved.",
     },
     a: {
-      langAria: "Language", heroAlt: "Elisa Ceccarelli tattooing a forearm, in a black tank top and black gloves, focused on her work",
+      langAria: "Language", igAria: "Elisa Tattoo on Instagram (@elisa.tattoo__)", heroAlt: "Elisa Ceccarelli tattooing a forearm, in a black tank top and black gloves, focused on her work",
       projetos: "Recent projects", projAnt: "Previous project", projProx: "Next project", portfolio: "Portfolio", avAria: "Client reviews", avAnt: "Previous review", avProx: "Next review",
       aboutAlt: "Black and white portrait of Elisa Ceccarelli in a black leather jacket, standing beside a tram",
       lbAria: "Enlarged photo", lbFechar: "Close", lbAnt: "Previous photo", lbProx: "Next photo",
@@ -553,7 +533,7 @@ const TXT = {
       locTitulo: "Dove siamo", locEnd: "Birmensdorferstrasse 114<br>8003 Zurigo, Svizzera", locAviso: "Si riceve su appuntamento, previa consulenza.", locTexto: "Durante la consulenza possiamo parlare della tua idea, chiarire ogni dubbio e sviluppare un progetto di tatuaggio completamente personalizzato.", locVerMapa: "Vedi su Google Maps", orcBotao: "Compila il modulo", direitos: "Tutti i diritti riservati.",
     },
     a: {
-      langAria: "Lingua", heroAlt: "Elisa Ceccarelli mentre tatua un avambraccio, con canotta nera e guanti neri, concentrata sul lavoro",
+      langAria: "Lingua", igAria: "Elisa Tattoo su Instagram (@elisa.tattoo__)", heroAlt: "Elisa Ceccarelli mentre tatua un avambraccio, con canotta nera e guanti neri, concentrata sul lavoro",
       projetos: "Progetti recenti", projAnt: "Progetto precedente", projProx: "Progetto successivo", portfolio: "Portfolio", avAria: "Recensioni dei clienti", avAnt: "Recensione precedente", avProx: "Recensione successiva",
       aboutAlt: "Ritratto in bianco e nero di Elisa Ceccarelli con giacca di pelle nera, accanto a un tram",
       lbAria: "Foto ingrandita", lbFechar: "Chiudi", lbAnt: "Foto precedente", lbProx: "Foto successiva",
@@ -598,7 +578,7 @@ const TXT = {
       locTitulo: "So findest du uns", locEnd: "Birmensdorferstrasse 114<br>8003 Zürich, Schweiz", locAviso: "Besuche nur nach vereinbartem Beratungstermin.", locTexto: "Bei der Beratung sprechen wir über deine Idee, klären offene Fragen und entwickeln ein ganz individuelles Tattoo-Design.", locVerMapa: "Auf Google Maps ansehen", orcBotao: "Formular ausfüllen", direitos: "Alle Rechte vorbehalten.",
     },
     a: {
-      langAria: "Sprache", heroAlt: "Elisa Ceccarelli beim Tätowieren eines Unterarms, in schwarzem Top und schwarzen Handschuhen, konzentriert bei der Arbeit",
+      langAria: "Sprache", igAria: "Elisa Tattoo auf Instagram (@elisa.tattoo__)", heroAlt: "Elisa Ceccarelli beim Tätowieren eines Unterarms, in schwarzem Top und schwarzen Handschuhen, konzentriert bei der Arbeit",
       projetos: "Aktuelle Projekte", projAnt: "Vorheriges Projekt", projProx: "Nächstes Projekt", portfolio: "Portfolio", avAria: "Kundenbewertungen", avAnt: "Vorherige Bewertung", avProx: "Nächste Bewertung",
       aboutAlt: "Schwarz-Weiss-Porträt von Elisa Ceccarelli in schwarzer Lederjacke neben einem Tram",
       lbAria: "Vergrössertes Foto", lbFechar: "Schliessen", lbAnt: "Vorheriges Foto", lbProx: "Nächstes Foto",
@@ -643,7 +623,7 @@ const TXT = {
       locTitulo: "Où nous trouver", locEnd: "Birmensdorferstrasse 114<br>8003 Zurich, Suisse", locAviso: "Accueil uniquement sur rendez-vous de consultation.", locTexto: "Lors de la consultation, nous pourrons parler de votre idée, répondre à vos questions et développer un projet de tatouage entièrement personnalisé.", locVerMapa: "Voir sur Google Maps", orcBotao: "Remplir le formulaire", direitos: "Tous droits réservés.",
     },
     a: {
-      langAria: "Langue", heroAlt: "Elisa Ceccarelli en train de tatouer un avant-bras, en débardeur noir et gants noirs, concentrée sur son travail",
+      langAria: "Langue", igAria: "Elisa Tattoo sur Instagram (@elisa.tattoo__)", heroAlt: "Elisa Ceccarelli en train de tatouer un avant-bras, en débardeur noir et gants noirs, concentrée sur son travail",
       projetos: "Projets récents", projAnt: "Projet précédent", projProx: "Projet suivant", portfolio: "Portfolio", avAria: "Avis des clients", avAnt: "Avis précédent", avProx: "Avis suivant",
       aboutAlt: "Portrait en noir et blanc d'Elisa Ceccarelli en veste en cuir noire, à côté d'un tramway",
       lbAria: "Photo agrandie", lbFechar: "Fermer", lbAnt: "Photo précédente", lbProx: "Photo suivante",
@@ -688,7 +668,7 @@ const TXT = {
       locTitulo: "Dónde estamos", locEnd: "Birmensdorferstrasse 114<br>8003 Zúrich, Suiza", locAviso: "Atención con cita previa de consulta.", locTexto: "Durante la consulta, podemos hablar sobre tu idea, resolver tus dudas y desarrollar un diseño de tatuaje totalmente personalizado.", locVerMapa: "Ver en Google Maps", orcBotao: "Rellenar el formulario", direitos: "Todos los derechos reservados.",
     },
     a: {
-      langAria: "Idioma", heroAlt: "Elisa Ceccarelli tatuando un antebrazo, con camiseta de tirantes negra y guantes negros, concentrada en su trabajo",
+      langAria: "Idioma", igAria: "Elisa Tattoo en Instagram (@elisa.tattoo__)", heroAlt: "Elisa Ceccarelli tatuando un antebrazo, con camiseta de tirantes negra y guantes negros, concentrada en su trabajo",
       projetos: "Proyectos recientes", projAnt: "Proyecto anterior", projProx: "Siguiente proyecto", portfolio: "Portafolio", avAria: "Reseñas de clientes", avAnt: "Reseña anterior", avProx: "Siguiente reseña",
       aboutAlt: "Retrato en blanco y negro de Elisa Ceccarelli con chaqueta de cuero negra, junto a un tranvía",
       lbAria: "Foto ampliada", lbFechar: "Cerrar", lbAnt: "Foto anterior", lbProx: "Foto siguiente",
