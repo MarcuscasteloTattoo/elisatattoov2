@@ -10,7 +10,7 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:image" content="assets/banner-elisa.webp">
-<meta name="theme-color" content="#1c1410">
+<meta name="theme-color" content="#222120">
 <link rel="icon" type="image/png" href="favicon.png?v=4">
 <link rel="apple-touch-icon" href="apple-touch-icon.png?v=4">
 <link rel="preload" as="image" href="assets/banner-elisa.webp" imagesrcset="assets/banner-elisa-800.webp 800w, assets/banner-elisa.webp 1400w" imagesizes="(min-width: 768px) 56vw, 100vw" fetchpriority="high">
@@ -20,23 +20,23 @@
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Jost:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Jost:wght@400;500;600&display=swap"></noscript>
 <style>
-/* Layout e fundos quentes do modelo de referência (hero com retrato, letreiro, faixas alternadas com linhas finas,
-   colunas de até 72rem). Da Elisa: logo, conteúdo e botões dourados (#DAC65A). */
+/* Layout do modelo de referência (hero com retrato, letreiro, faixas alternadas com linhas finas, colunas de até 72rem),
+   em tons neutros claros, com logo, conteúdo e botões dourados (#DAC65A) da Elisa. */
 :root {
   color-scheme: light;
-  /* fundos quentes do site de referência (papel, areia, nude) — deixam o site mais feminino e vivo */
-  --bg: #f7ede2;        /* fundo da página (papel quente) */
-  --card: #fcf6ee;      /* faixa dos projetos, cards, botões redondos */
-  --soft: #f0e0d2;      /* faixas alternadas (avaliações, orçamento) */
-  --sand: #ead2c1;      /* letreiro */
-  --fg: #16100d;        /* texto (quase preto, quente) */
-  --ink: #1c1410;       /* banner e áreas escuras (marrom muito escuro) */
-  --muted: #5d483d;
+  /* meio-termo: neutros claros e levemente quentes (nem o bege da referência, nem o cinza frio/preto de antes) */
+  --bg: #f4f2ef;        /* fundo da página (off-white) */
+  --card: #fbfaf8;      /* faixa dos projetos, cards, botões redondos */
+  --soft: #ebe8e4;      /* faixas alternadas (avaliações, orçamento) */
+  --sand: #e2ded9;      /* letreiro */
+  --fg: #1c1b1a;        /* texto */
+  --ink: #222120;       /* banner e áreas escuras (grafite) */
+  --muted: #57534f;
   --gold: #dac65a;      /* botões e CTAs da Elisa */
-  --accent: #834e38;    /* links, ícones e detalhes em texto (terracota) */
-  --line: #cdb6a5;      /* linhas finas entre as faixas */
-  --hero-fg: #fffaf4;
-  --hero-muted: #e6dcd2;
+  --accent: #6f6224;    /* links, ícones e detalhes em texto (dourado escuro da Elisa) */
+  --line: #d6d1cb;      /* linhas finas entre as faixas */
+  --hero-fg: #ffffff;
+  --hero-muted: #e4e1dd;
   --display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
   --body: "Jost", system-ui, -apple-system, "Segoe UI", sans-serif;
   --r: .375rem;
@@ -65,7 +65,7 @@ img { max-width: 100%; display: block; }
 /* ---------- HERO ---------- */
 .hero { position: relative; overflow: hidden; background: var(--ink); color: var(--hero-fg); }
 .hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 60% 30%; }
-.hero::after { content: ""; position: absolute; inset: 0; background: rgb(18 11 8 / .62); pointer-events: none; }
+.hero::after { content: ""; position: absolute; inset: 0; background: rgb(24 23 22 / .62); pointer-events: none; }
 .hero-inner { position: relative; z-index: 1; min-height: 78svh; display: flex; align-items: flex-end; justify-content: center; padding-block: 5rem 3.5rem; }
 @media (min-width: 768px) { .hero-inner { min-height: 84svh; align-items: center; padding-block: 6rem; } }
 .hero-copy { max-width: 36rem; text-align: center; }
@@ -80,7 +80,7 @@ img { max-width: 100%; display: block; }
 /* PC: foto à direita, texto à esquerda */
 @media (min-width: 900px) {
   .hero-img { left: auto; width: 56%; object-position: 50% 22%; }
-  .hero::after { background: linear-gradient(90deg, var(--ink) 0 44%, rgb(28 20 16 / .55) 58%, rgb(18 11 8 / .15) 100%); }
+  .hero::after { background: linear-gradient(90deg, var(--ink) 0 44%, rgb(34 33 32 / .55) 58%, rgb(24 23 22 / .15) 100%); }
   .hero-inner { justify-content: flex-start; }
   .hero-copy { text-align: left; max-width: 31rem; width: 44%; }
   .hero-sub { margin-left: 0; }
@@ -91,12 +91,12 @@ img { max-width: 100%; display: block; }
 .lang { position: absolute; z-index: 10; top: calc(.85rem + env(safe-area-inset-top, 0px)); right: max(16px, env(safe-area-inset-right, 0px)); }
 @media (min-width: 768px) { .lang { top: 1.25rem; right: 1.5rem; } }
 .lang-cur, .lang-opt { display: inline-flex; align-items: center; gap: .45rem; cursor: pointer; color: var(--hero-fg); font-size: .72rem; font-weight: 600; letter-spacing: .08em; }
-.lang-cur { padding: .4rem .55rem .4rem .5rem; border: 1px solid rgb(255 255 255 / .22); border-radius: 999px; background: rgb(28 20 16 / .55); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); transition: border-color .2s; }
+.lang-cur { padding: .4rem .55rem .4rem .5rem; border: 1px solid rgb(255 255 255 / .22); border-radius: 999px; background: rgb(34 33 32 / .55); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); transition: border-color .2s; }
 .lang-cur:hover, .lang-cur[aria-expanded="true"] { border-color: var(--gold); }
 .lang-cur .chev { width: .9rem; height: .9rem; transition: transform .2s; }
 .lang-cur[aria-expanded="true"] .chev { transform: rotate(180deg); }
 .lang .flag { width: 1.3rem; height: .875rem; flex: none; border-radius: 2px; box-shadow: 0 0 0 1px rgb(255 255 255 / .25); }
-.lang-menu { position: absolute; top: calc(100% + .45rem); right: 0; min-width: 11.5rem; margin: 0; padding: .35rem; list-style: none; border: 1px solid rgb(218 198 90 / .45); border-radius: .75rem; background: rgb(28 20 16 / .94); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: 0 12px 32px rgb(0 0 0 / .35); }
+.lang-menu { position: absolute; top: calc(100% + .45rem); right: 0; min-width: 11.5rem; margin: 0; padding: .35rem; list-style: none; border: 1px solid rgb(218 198 90 / .45); border-radius: .75rem; background: rgb(34 33 32 / .95); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: 0 12px 32px rgb(0 0 0 / .35); }
 .lang-opt { width: 100%; padding: .6rem .7rem; border: 0; border-radius: .5rem; background: none; font-size: .85rem; font-weight: 500; letter-spacing: .02em; text-align: left; }
 .lang-opt:hover, .lang-opt:focus-visible { background: rgb(255 255 255 / .1); outline: none; }
 .lang-opt[aria-checked="true"] { color: var(--gold); }
@@ -162,7 +162,7 @@ img { max-width: 100%; display: block; }
 .review time { display: block; margin-top: .2rem; font-size: .75rem; color: var(--muted); }
 .g-badge { display: grid; place-items: center; width: 2rem; height: 2rem; border-radius: 999px; border: 1px solid var(--line); background: var(--card); box-shadow: 0 1px 2px rgb(0 0 0 / .08); }
 .g-badge svg { width: 1rem; height: 1rem; }
-.stars { display: flex; gap: .125rem; margin-top: 1.25rem; color: var(--accent); }
+.stars { display: flex; gap: .125rem; margin-top: 1.25rem; color: #c9b44a; }
 .stars svg { width: 1rem; height: 1rem; }
 .review-text { margin-top: 1rem; font-size: .875rem; line-height: 1.65; }
 .review-text.clamp { display: -webkit-box; -webkit-line-clamp: 9; -webkit-box-orient: vertical; overflow: hidden; }
@@ -222,7 +222,7 @@ footer { border-top: 1px solid var(--line); }
 .copy { font-size: .75rem; color: var(--muted); }
 
 /* ---------- LIGHTBOX ---------- */
-.lightbox { position: fixed; inset: 0; z-index: 50; display: flex; align-items: center; justify-content: center; padding: 1rem; background: rgb(18 11 8 / .92); }
+.lightbox { position: fixed; inset: 0; z-index: 50; display: flex; align-items: center; justify-content: center; padding: 1rem; background: rgb(24 23 22 / .92); }
 .lb-media img { max-width: 92vw; max-height: 82vh; width: auto; height: auto; border-radius: .5rem; }
 .lb-btn { position: absolute; display: grid; place-items: center; padding: .5rem; border: 0; border-radius: 999px; background: rgb(255 255 255 / .12); color: #fff; cursor: pointer; }
 .lb-btn:hover { background: rgb(255 255 255 / .22); }
