@@ -54,33 +54,31 @@ img { max-width: 100%; display: block; }
 .nw { white-space: nowrap; }
 
 .wrap { max-width: 72rem; margin: 0 auto; padding-inline: max(24px, env(safe-area-inset-left, 0px)) max(24px, env(safe-area-inset-right, 0px)); }
-.section { padding-block: 4rem; }
+.section { padding-block: 3.5rem; }
 @media (min-width: 768px) { .section { padding-block: 6rem; } }
-.h2 { font-size: clamp(1.875rem, 1.5rem + 1.2vw, 2.25rem); line-height: 1.15; text-align: center; }
+.h2 { font-size: clamp(1.75rem, 1.4rem + 1.1vw, 2.15rem); line-height: 1.15; text-align: center; }
 .lead { font-size: .875rem; color: var(--muted); text-align: center; margin: 1rem auto 0; max-width: 30rem; line-height: 1.6; }
 .icon { width: 1rem; height: 1rem; flex: none; }
 
-/* ---------- HERO ---------- */
+/* ---------- HERO (modelo: texto à esquerda, foto à direita) ---------- */
 .hero { position: relative; overflow: hidden; background: var(--ink); color: var(--hero-fg); }
-.hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 58% 30%; }
-.hero::after { content: ""; position: absolute; inset: 0; background: rgb(0 0 0 / .6); pointer-events: none; }
-.hero-inner { position: relative; z-index: 1; min-height: 78svh; display: flex; align-items: flex-end; justify-content: center; padding-block: 5rem 3.5rem; }
-.hero-copy { max-width: 36rem; text-align: center; }
-.brand { margin-bottom: 1rem; font-size: .75rem; font-weight: 500; letter-spacing: .35em; text-transform: uppercase; color: var(--gold); }
+.hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 62% 18%; }
+/* celular: foto de fundo, escurecendo de baixo para cima para o texto */
+.hero::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, rgb(0 0 0 / .45) 0, rgb(0 0 0 / 0) 22%, rgb(0 0 0 / .15) 40%, rgb(0 0 0 / .82) 66%, #000 100%); }
+.hero-inner { position: relative; z-index: 1; min-height: 86svh; display: flex; align-items: flex-end; padding-block: 6rem 2.5rem; }
+.hero-copy { max-width: 34rem; text-align: left; }
+.brand { margin-bottom: 1.1rem; }
 /* logo da Elisa (branco, fundo transparente) */
-.brand-logo { display: block; width: auto; height: clamp(2.4rem, 2rem + 1.2vw, 3.1rem); margin: 0 auto; }
-@media (min-width: 768px) { .brand-logo { margin-left: 0; } }
+.brand-logo { display: block; width: auto; height: clamp(2.1rem, 1.8rem + 1vw, 2.75rem); margin: 0; }
 /* títulos mais longos que o do projeto-base ("microrrealismo", "Mikrorealismus"): tamanho ajustado para não estourar */
 .hero h1 { font-size: clamp(2.6rem, 1.5rem + 3.2vw, 4.25rem); line-height: 1.05; overflow-wrap: break-word; hyphens: manual; }
-.hero-sub { margin: 1.5rem auto 0; max-width: 28rem; font-size: clamp(1rem, .95rem + .25vw, 1.125rem); line-height: 1.65; color: var(--hero-muted); }
-@media (min-width: 768px) { .hero-inner { min-height: 84svh; align-items: center; padding-block: 6rem; } }
-/* tablet e PC: foto do lado esquerdo, texto do lado direito */
+.hero-sub { margin: 1.25rem 0 0; max-width: 26rem; font-size: clamp(.95rem, .9rem + .2vw, 1.05rem); line-height: 1.65; color: var(--hero-muted); }
+/* tablet e PC: texto do lado esquerdo, foto do lado direito */
 @media (min-width: 768px) {
-  .hero-img { right: auto; width: 56%; object-position: 62% 12%; }
-  .hero::after { background: linear-gradient(270deg, var(--ink) 0 44%, rgb(0 0 0 / .55) 58%, rgb(0 0 0 / .12) 100%); }
-  .hero-inner { justify-content: flex-end; }
-  .hero-copy { text-align: left; width: 44%; max-width: 31rem; }
-  .hero-sub { margin-left: 0; }
+  .hero-img { left: auto; right: 0; width: 54%; object-position: 55% 16%; }
+  .hero::after { background: linear-gradient(90deg, var(--ink) 0 46%, rgb(0 0 0 / .55) 54%, rgb(0 0 0 / .08) 72%, rgb(0 0 0 / 0) 100%); }
+  .hero-inner { min-height: clamp(32rem, 44vw, 40rem); align-items: center; padding-block: 5rem; }
+  .hero-copy { width: 46%; max-width: 31rem; }
 }
 @media (min-width: 768px) and (max-width: 1023px) { .hero h1 { font-size: 2.75rem; } .lang { top: 1rem; } }
 
@@ -110,10 +108,10 @@ img { max-width: 100%; display: block; }
 .lang-opt .code { margin-left: auto; font-size: .68rem; font-weight: 600; letter-spacing: .1em; opacity: .6; }
 
 /* letreiro */
-.marquee { position: relative; z-index: 1; display: flex; overflow: hidden; padding-block: .75rem; background: var(--ink); border-block: 1px solid rgb(218 198 90 / .35); }
+.marquee { position: relative; z-index: 1; display: flex; overflow: hidden; padding-block: .65rem; background: var(--tint); }
 .marquee-track { display: flex; flex: none; gap: 2rem; padding-right: 2rem; white-space: nowrap; animation: marquee 30s linear infinite; }
-.marquee span { display: inline-flex; gap: 2rem; font-size: .75rem; font-weight: 500; letter-spacing: .3em; text-transform: uppercase; color: var(--hero-muted); }
-.marquee b { color: var(--gold); font-weight: 400; }
+.marquee span { display: inline-flex; gap: 2rem; font-size: .68rem; font-weight: 500; letter-spacing: .3em; text-transform: uppercase; color: #1a1a1a; }
+.marquee b { color: #8a8a8a; font-weight: 400; }
 @keyframes marquee { to { transform: translateX(-50%); } }
 
 /* ---------- FOTOS ---------- */
@@ -121,32 +119,37 @@ img { max-width: 100%; display: block; }
 .ph img { width: 100%; height: 100%; object-fit: cover; }
 
 /* ---------- PROJETOS (carrossel contínuo) ---------- */
-.projects { border-top: 1px solid var(--line); }
-.projects > .section { padding-block: 2.8rem; }
-@media (min-width: 768px) { .projects > .section { padding-block: 4.2rem; } }
+.projects { background: var(--bg); }
+.projects > .section { padding-block: 3.25rem; }
+@media (min-width: 768px) { .projects > .section { padding-block: 5rem; } }
 .car-view { overflow: hidden; padding-bottom: .5rem; touch-action: pan-y; user-select: none; -webkit-user-select: none; cursor: grab; }
 .car-view.dragging { cursor: grabbing; }
 .car-track { display: flex; width: max-content; will-change: transform; }
 .car-copy { display: flex; }
-.style-card { flex: none; width: 15rem; padding-right: 1.5rem; }
+.style-card { flex: none; width: min(70vw, 16rem); padding-right: .9rem; }
 .style-card .ph { cursor: zoom-in; transition: transform .3s ease; }
 .style-card .ph:hover { transform: scale(1.03); }
-@media (min-width: 640px) { .style-card { width: 19rem; } }
-.style-card h3 { margin-top: 1.25rem; font-size: 1.25rem; }
-.style-card p { margin-top: .5rem; font-size: .875rem; line-height: 1.6; color: var(--muted); }
+@media (min-width: 640px) { .style-card { width: 16.5rem; padding-right: 1rem; } }
+.style-card h3 { margin-top: 1rem; font-size: 1.15rem; }
+.style-card p { margin-top: .4rem; font-size: .8125rem; line-height: 1.55; color: var(--muted); }
 .ctrls { margin-top: 1.25rem; display: flex; justify-content: center; gap: .75rem; }
 .ctrl { display: grid; place-items: center; width: 2.5rem; height: 2.5rem; border-radius: 999px; border: 1px solid var(--line); background: var(--bg); color: var(--fg); cursor: pointer; transition: background .2s, border-color .2s; }
 .ctrl:hover { background: var(--gold); border-color: var(--gold); }
 .ctrl svg { width: 1.25rem; height: 1.25rem; }
 
-/* ---------- PORTFÓLIO ---------- */
-#portfolio { padding-top: 2.8rem; }
-@media (min-width: 768px) { #portfolio { padding-top: 4.2rem; } }
-.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; }
-@media (min-width: 768px) { .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; } }
-.pf { display: block; padding: 0; border: 0; background: none; border-radius: .75rem; overflow: hidden; cursor: zoom-in; }
-.pf .ph { border-radius: .75rem; transition: transform .3s ease; }
+/* ---------- PORTFÓLIO (modelo: faixa clara, título, grade e botão abaixo) ---------- */
+.works { background: var(--soft); }
+.works .h2 { margin-bottom: 2rem; }
+@media (min-width: 768px) { .works .h2 { margin-bottom: 2.5rem; } }
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5rem; }
+@media (min-width: 768px) { .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .75rem; } }
+.pf { display: block; padding: 0; border: 0; background: none; border-radius: .5rem; overflow: hidden; cursor: zoom-in; }
+.pf .ph { border-radius: .5rem; transition: transform .3s ease; }
 .pf:hover .ph { transform: scale(1.04); }
+.works-cta { margin-top: 2.25rem; text-align: center; }
+.btn-pill { display: inline-flex; align-items: center; gap: .55rem; padding: .85rem 1.6rem; border-radius: 999px; background: var(--gold); color: #000; text-decoration: none; font-size: .78rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; transition: transform .2s ease, filter .2s; }
+.btn-pill:hover { transform: scale(1.03); filter: brightness(1.06); }
+.btn-pill svg { width: 1.05rem; height: 1.05rem; flex: none; }
 
 /* ---------- SOBRE ---------- */
 .about { display: grid; align-items: center; gap: 2.5rem; }
@@ -161,7 +164,8 @@ img { max-width: 100%; display: block; }
 .about .link { margin-top: 1.75rem; letter-spacing: .04em; text-transform: uppercase; }
 
 /* ---------- AVALIAÇÕES ---------- */
-.reviews-band { background: var(--soft); border-block: 1px solid var(--line); }
+.reviews-band { background: var(--bg); }
+.about-band { background: var(--soft); }
 .rev-badge { display: inline-flex; align-items: center; gap: .55rem; padding: .5rem 1rem; border: 1px solid var(--line); border-radius: 999px; background: var(--bg); text-decoration: none; }
 .rev-badge:hover { border-color: var(--gold); }
 .rev-badge .gl { width: 1.35rem; height: 1.35rem; }
@@ -304,20 +308,11 @@ footer { background: var(--ink); color: var(--hero-fg); border-top: 1px solid rg
     </div>
   </section>
 
-  <section class="wrap section" id="portfolio" data-a="aria-label:portfolio" aria-label="Portfólio">
-    <div class="grid" id="grid"></div>
-  </section>
-
-  <section class="wrap section" id="sobre">
-    <div class="about">
-      <img class="about-img" src="assets/sobre-elisa.webp" srcset="assets/sobre-elisa-480.webp 480w, assets/sobre-elisa.webp 800w" sizes="(min-width: 768px) 24rem, 22rem" width="800" height="1000" loading="lazy" decoding="async" data-a="alt:aboutAlt" alt="Retrato em preto e branco de Elisa Ceccarelli, de jaqueta de couro preta, ao lado de um bonde">
-      <div>
-        <h2>Elisa Ceccarelli</h2>
-        <p data-t="sobre1">Meu nome é Elisa Ceccarelli, nasci em Roma e sou apaixonada por desenho desde criança. Estudei em uma escola de ensino médio voltada para a arte e me formei em Escultura pela Academia de Belas Artes.</p>
-        <p data-t="sobre2">Há cerca de seis anos, iniciei minha jornada como tatuadora, trabalhando em estúdios, participações especiais e convenções que ajudaram a moldar e enriquecer meu estilo. Atualmente, resido em Zurique, onde continuo atuando como tatuadora. Sou especializada em linhas finas e microrrealismo, estilos que refletem minha precisão e sensibilidade artística.</p>
-        <p data-t="sobre3">Com uma sólida formação em desenho, crio cada tatuagem do zero, em estreita colaboração com meus clientes, sempre buscando um resultado único e personalizado.</p>
-        <a class="link" href="https://www.instagram.com/elisa.tattoo__/" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#i-ig"/></svg>@elisa.tattoo__</a>
-      </div>
+  <section class="works" id="portfolio">
+    <div class="wrap section">
+      <h2 class="h2" data-t="portTitulo">Portfólio</h2>
+      <div class="grid" id="grid"></div>
+      <div class="works-cta"><a class="btn-pill js-agendar" href="#" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-cal"/></svg><span data-t="orcBotao">Preencha o formulário</span></a></div>
     </div>
   </section>
 
@@ -343,6 +338,21 @@ footer { background: var(--ink); color: var(--hero-fg); border-top: 1px solid rg
       <div style="margin-top:2.25rem;text-align:center">
         <a class="link js-maps" href="#" target="_blank" rel="noopener noreferrer"><span data-t="avLink">Ver todas as avaliações no Google</span><svg class="icon"><use href="#i-ext"/></svg></a>
       </div>
+    </div>
+  </section>
+
+  <section class="about-band" id="sobre">
+    <div class="wrap section">
+    <div class="about">
+      <img class="about-img" src="assets/sobre-elisa.webp" srcset="assets/sobre-elisa-480.webp 480w, assets/sobre-elisa.webp 800w" sizes="(min-width: 768px) 24rem, 22rem" width="800" height="1000" loading="lazy" decoding="async" data-a="alt:aboutAlt" alt="Retrato em preto e branco de Elisa Ceccarelli, de jaqueta de couro preta, ao lado de um bonde">
+      <div>
+        <h2>Elisa Ceccarelli</h2>
+        <p data-t="sobre1">Meu nome é Elisa Ceccarelli, nasci em Roma e sou apaixonada por desenho desde criança. Estudei em uma escola de ensino médio voltada para a arte e me formei em Escultura pela Academia de Belas Artes.</p>
+        <p data-t="sobre2">Há cerca de seis anos, iniciei minha jornada como tatuadora, trabalhando em estúdios, participações especiais e convenções que ajudaram a moldar e enriquecer meu estilo. Atualmente, resido em Zurique, onde continuo atuando como tatuadora. Sou especializada em linhas finas e microrrealismo, estilos que refletem minha precisão e sensibilidade artística.</p>
+        <p data-t="sobre3">Com uma sólida formação em desenho, crio cada tatuagem do zero, em estreita colaboração com meus clientes, sempre buscando um resultado único e personalizado.</p>
+        <a class="link" href="https://www.instagram.com/elisa.tattoo__/" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#i-ig"/></svg>@elisa.tattoo__</a>
+      </div>
+    </div>
     </div>
   </section>
 
@@ -489,7 +499,7 @@ const TXT = {
     t: {
       h1: 'Fine line <span class="nw">&amp; micro-realism</span>',
       heroSub: "Delicate, custom tattoos that combine precision, sensitivity and rich detail to turn every idea into a one-of-a-kind piece of art.",
-      projetos: "Recent projects",
+      projetos: "Recent projects", portTitulo: "Portfolio",
       sobre1: "My name is Elisa Ceccarelli. I was born in Rome and have loved drawing since I was a child. I attended an art-focused high school and graduated in Sculpture from the Academy of Fine Arts.",
       sobre2: "About six years ago, I began my journey as a tattoo artist, working in studios, guest spots and conventions that helped shape and enrich my style. I now live in Zurich, where I continue to work as a tattoo artist. I specialize in fine line and micro-realism, styles that reflect my precision and artistic sensitivity.",
       sobre3: "With a solid background in drawing, I create every tattoo from scratch, in close collaboration with my clients, always aiming for a unique, personalized result.",
@@ -534,7 +544,7 @@ const TXT = {
     t: {
       h1: 'Linee sottili <span class="nw">&amp; microrealismo</span>',
       heroSub: "Tatuaggi delicati e personalizzati, che uniscono precisione, sensibilità e ricchezza di dettagli per trasformare ogni idea in un'opera d'arte unica.",
-      projetos: "Progetti recenti",
+      projetos: "Progetti recenti", portTitulo: "Portfolio",
       sobre1: "Mi chiamo Elisa Ceccarelli, sono nata a Roma e sono appassionata di disegno fin da bambina. Ho frequentato un liceo artistico e mi sono diplomata in Scultura all'Accademia di Belle Arti.",
       sobre2: "Circa sei anni fa ho iniziato il mio percorso come tatuatrice, lavorando in studi, guest spot e convention che hanno contribuito a formare e arricchire il mio stile. Oggi vivo a Zurigo, dove continuo a lavorare come tatuatrice. Sono specializzata in linee sottili e microrealismo, stili che riflettono la mia precisione e la mia sensibilità artistica.",
       sobre3: "Grazie a una solida formazione nel disegno, creo ogni tatuaggio da zero, in stretta collaborazione con i miei clienti, cercando sempre un risultato unico e personalizzato.",
@@ -579,7 +589,7 @@ const TXT = {
     t: {
       h1: 'Feine Linien <span class="nw">&amp; Mikrorealismus</span>',
       heroSub: "Filigrane, individuelle Tattoos, die Präzision, Feingefühl und Detailreichtum verbinden, um jede Idee in ein einzigartiges Kunstwerk zu verwandeln.",
-      projetos: "Aktuelle Projekte",
+      projetos: "Aktuelle Projekte", portTitulo: "Portfolio",
       sobre1: "Mein Name ist Elisa Ceccarelli. Ich wurde in Rom geboren und zeichne leidenschaftlich gern, seit ich ein Kind bin. Ich habe ein Gymnasium mit künstlerischem Schwerpunkt besucht und an der Akademie der Bildenden Künste mein Studium in Bildhauerei abgeschlossen.",
       sobre2: "Vor rund sechs Jahren habe ich meinen Weg als Tätowiererin begonnen – in Studios, bei Guest Spots und auf Conventions, die meinen Stil geprägt und bereichert haben. Heute lebe ich in Zürich, wo ich weiterhin als Tätowiererin arbeite. Ich bin auf feine Linien und Mikrorealismus spezialisiert – Stile, die meine Präzision und mein künstlerisches Feingefühl widerspiegeln.",
       sobre3: "Mit einer fundierten Ausbildung im Zeichnen entwerfe ich jedes Tattoo von Grund auf, in enger Zusammenarbeit mit meinen Kundinnen und Kunden, und strebe stets ein einzigartiges, persönliches Ergebnis an.",
@@ -624,7 +634,7 @@ const TXT = {
     t: {
       h1: 'Traits fins <span class="nw">&amp; microréalisme</span>',
       heroSub: "Des tatouages délicats et personnalisés, alliant précision, sensibilité et richesse des détails pour faire de chaque idée une œuvre d'art unique.",
-      projetos: "Projets récents",
+      projetos: "Projets récents", portTitulo: "Portfolio",
       sobre1: "Je m'appelle Elisa Ceccarelli, je suis née à Rome et je suis passionnée de dessin depuis l'enfance. J'ai suivi un lycée à orientation artistique et je suis diplômée en sculpture de l'Académie des Beaux-Arts.",
       sobre2: "Il y a environ six ans, j'ai commencé mon parcours de tatoueuse en travaillant dans des studios, en guest spots et lors de conventions qui ont contribué à façonner et enrichir mon style. Je vis aujourd'hui à Zurich, où je continue d'exercer comme tatoueuse. Je suis spécialisée dans les traits fins et le microréalisme, des styles qui reflètent ma précision et ma sensibilité artistique.",
       sobre3: "Forte d'une solide formation en dessin, je crée chaque tatouage de A à Z, en étroite collaboration avec mes clients, toujours à la recherche d'un résultat unique et personnalisé.",
@@ -669,7 +679,7 @@ const TXT = {
     t: {
       h1: 'Líneas finas <span class="nw">y microrrealismo</span>',
       heroSub: "Tatuajes delicados y personalizados, que combinan precisión, sensibilidad y riqueza de detalles para transformar cada idea en una obra de arte única.",
-      projetos: "Proyectos recientes",
+      projetos: "Proyectos recientes", portTitulo: "Portafolio",
       sobre1: "Me llamo Elisa Ceccarelli, nací en Roma y me apasiona el dibujo desde niña. Estudié en un instituto de bachillerato artístico y me licencié en Escultura en la Academia de Bellas Artes.",
       sobre2: "Hace unos seis años comencé mi trayectoria como tatuadora, trabajando en estudios, guest spots y convenciones que ayudaron a moldear y enriquecer mi estilo. Actualmente vivo en Zúrich, donde sigo trabajando como tatuadora. Me especializo en líneas finas y microrrealismo, estilos que reflejan mi precisión y sensibilidad artística.",
       sobre3: "Con una sólida formación en dibujo, creo cada tatuaje desde cero, en estrecha colaboración con mis clientes, buscando siempre un resultado único y personalizado.",
