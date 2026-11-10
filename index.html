@@ -1,0 +1,896 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Elisa Tattoo | Linhas Finas &amp; Microrrealismo</title>
+<meta name="description" content="Elisa Tattoo: linhas finas e microrrealismo. Tatuagens delicadas e personalizadas, que combinam precisão, sensibilidade e riqueza de detalhes para transformar cada ideia em uma arte única.">
+<meta property="og:title" content="Elisa Tattoo | Linhas Finas &amp; Microrrealismo">
+<meta property="og:description" content="Tatuagens delicadas e personalizadas, com precisão, sensibilidade e riqueza de detalhes.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:image" content="assets/banner-elisa.webp">
+<meta name="theme-color" content="#000000">
+<link rel="icon" type="image/png" href="favicon.png?v=3">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=3">
+<link rel="preload" as="image" href="assets/banner-elisa.webp" imagesrcset="assets/banner-elisa-800.webp 800w, assets/banner-elisa.webp 1400w" imagesizes="(min-width: 768px) 56vw, 100vw" fetchpriority="high">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- fontes carregadas sem bloquear a primeira pintura da página -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Jost:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Jost:wght@400;500;600&display=swap"></noscript>
+<style>
+/* Paleta Elisa Tattoo:
+   #DAC65A amarelo-dourado (botões, CTAs, destaques) · #E3E3E3 cinza-claro (fundos de seções)
+   #E0E0E0 cinza secundário (alternância) · #000000 preto (áreas escuras e textos) · #FFFFFF branco (texto sobre escuro) */
+:root {
+  color-scheme: light;
+  --bg: #ffffff;
+  --fg: #000000;
+  --ink: #000000;
+  --soft: #e3e3e3;
+  --tint: #e0e0e0;
+  --muted: #555555;
+  --gold: #dac65a;
+  --accent: #6e621c; /* dourado escurecido: o #DAC65A não tem contraste para texto sobre fundo claro */
+  --line: #d2d2d2;
+  --hero-fg: #ffffff;
+  --hero-muted: #d9d9d9;
+  --display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --body: "Jost", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --r: .375rem;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.5 var(--body); -webkit-font-smoothing: antialiased; }
+h1, h2, h3 { font-family: var(--display); font-weight: 500; margin: 0; text-wrap: balance; }
+p { margin: 0; }
+a { color: inherit; }
+button { font: inherit; }
+img { max-width: 100%; display: block; }
+[hidden] { display: none !important; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.hero :focus-visible, .quote :focus-visible, footer :focus-visible, .lightbox :focus-visible { outline-color: var(--gold); }
+.nw { white-space: nowrap; }
+
+.wrap { max-width: 72rem; margin: 0 auto; padding-inline: max(24px, env(safe-area-inset-left, 0px)) max(24px, env(safe-area-inset-right, 0px)); }
+.section { padding-block: 4rem; }
+@media (min-width: 768px) { .section { padding-block: 6rem; } }
+.h2 { font-size: clamp(1.875rem, 1.5rem + 1.2vw, 2.25rem); line-height: 1.15; text-align: center; }
+.lead { font-size: .875rem; color: var(--muted); text-align: center; margin: 1rem auto 0; max-width: 30rem; line-height: 1.6; }
+.icon { width: 1rem; height: 1rem; flex: none; }
+
+/* ---------- HERO ---------- */
+.hero { position: relative; overflow: hidden; background: var(--ink); color: var(--hero-fg); }
+.hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 58% 30%; }
+.hero::after { content: ""; position: absolute; inset: 0; background: rgb(0 0 0 / .6); pointer-events: none; }
+.hero-inner { position: relative; z-index: 1; min-height: 78svh; display: flex; align-items: flex-end; justify-content: center; padding-block: 5rem 3.5rem; }
+.hero-copy { max-width: 36rem; text-align: center; }
+.brand { margin-bottom: 1rem; font-size: .75rem; font-weight: 500; letter-spacing: .35em; text-transform: uppercase; color: var(--gold); }
+/* logo da Elisa (branco, fundo transparente) */
+.brand-logo { display: block; width: auto; height: clamp(2.4rem, 2rem + 1.2vw, 3.1rem); margin: 0 auto; }
+@media (min-width: 768px) { .brand-logo { margin-left: 0; } }
+/* títulos mais longos que o do projeto-base ("microrrealismo", "Mikrorealismus"): tamanho ajustado para não estourar */
+.hero h1 { font-size: clamp(2.6rem, 1.5rem + 3.2vw, 4.25rem); line-height: 1.05; overflow-wrap: break-word; hyphens: manual; }
+.hero-sub { margin: 1.5rem auto 0; max-width: 28rem; font-size: clamp(1rem, .95rem + .25vw, 1.125rem); line-height: 1.65; color: var(--hero-muted); }
+@media (min-width: 768px) { .hero-inner { min-height: 84svh; align-items: center; padding-block: 6rem; } }
+/* tablet e PC: foto do lado esquerdo, texto do lado direito */
+@media (min-width: 768px) {
+  .hero-img { right: auto; width: 56%; object-position: 62% 12%; }
+  .hero::after { background: linear-gradient(270deg, var(--ink) 0 44%, rgb(0 0 0 / .55) 58%, rgb(0 0 0 / .12) 100%); }
+  .hero-inner { justify-content: flex-end; }
+  .hero-copy { text-align: left; width: 44%; max-width: 31rem; }
+  .hero-sub { margin-left: 0; }
+}
+@media (min-width: 768px) and (max-width: 1023px) { .hero h1 { font-size: 2.75rem; } .lang { top: 1rem; } }
+
+/* ---------- SELETOR DE IDIOMAS (menu suspenso) ---------- */
+.lang { position: absolute; z-index: 10; top: calc(.85rem + env(safe-area-inset-top, 0px)); right: max(16px, env(safe-area-inset-right, 0px)); }
+@media (min-width: 768px) { .lang { top: 1.25rem; right: 1.5rem; } }
+.lang-cur, .lang-opt {
+  display: inline-flex; align-items: center; gap: .45rem; cursor: pointer; color: var(--hero-fg);
+  font-size: .72rem; font-weight: 600; letter-spacing: .08em;
+}
+.lang-cur {
+  padding: .4rem .55rem .4rem .5rem; border: 1px solid rgb(255 255 255 / .22); border-radius: 999px;
+  background: rgb(0 0 0 / .55); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); transition: border-color .2s, color .2s;
+}
+.lang-cur:hover, .lang-cur[aria-expanded="true"] { border-color: var(--gold); }
+.lang-cur .chev { width: .9rem; height: .9rem; transition: transform .2s; }
+.lang-cur[aria-expanded="true"] .chev { transform: rotate(180deg); }
+.lang .flag { width: 1.3rem; height: .875rem; flex: none; border-radius: 2px; box-shadow: 0 0 0 1px rgb(255 255 255 / .25); }
+.lang-menu {
+  position: absolute; top: calc(100% + .45rem); right: 0; min-width: 11.5rem; margin: 0; padding: .35rem; list-style: none;
+  border: 1px solid rgb(218 198 90 / .45); border-radius: .75rem; background: rgb(0 0 0 / .92);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: 0 12px 32px rgb(0 0 0 / .35);
+}
+.lang-opt { width: 100%; padding: .6rem .7rem; border: 0; border-radius: .5rem; background: none; font-size: .85rem; font-weight: 500; letter-spacing: .02em; text-align: left; }
+.lang-opt:hover, .lang-opt:focus-visible { background: rgb(255 255 255 / .1); outline: none; }
+.lang-opt[aria-checked="true"] { color: var(--gold); }
+.lang-opt .code { margin-left: auto; font-size: .68rem; font-weight: 600; letter-spacing: .1em; opacity: .6; }
+
+/* letreiro */
+.marquee { position: relative; z-index: 1; display: flex; overflow: hidden; padding-block: .75rem; background: var(--ink); border-block: 1px solid rgb(218 198 90 / .35); }
+.marquee-track { display: flex; flex: none; gap: 2rem; padding-right: 2rem; white-space: nowrap; animation: marquee 30s linear infinite; }
+.marquee span { display: inline-flex; gap: 2rem; font-size: .75rem; font-weight: 500; letter-spacing: .3em; text-transform: uppercase; color: var(--hero-muted); }
+.marquee b { color: var(--gold); font-weight: 400; }
+@keyframes marquee { to { transform: translateX(-50%); } }
+
+/* ---------- FOTOS ---------- */
+.ph { position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; overflow: hidden; border-radius: var(--r); background: var(--soft); }
+.ph img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ---------- PROJETOS (carrossel contínuo) ---------- */
+.projects { border-top: 1px solid var(--line); }
+.projects > .section { padding-block: 2.8rem; }
+@media (min-width: 768px) { .projects > .section { padding-block: 4.2rem; } }
+.car-view { overflow: hidden; padding-bottom: .5rem; touch-action: pan-y; user-select: none; -webkit-user-select: none; cursor: grab; }
+.car-view.dragging { cursor: grabbing; }
+.car-track { display: flex; width: max-content; will-change: transform; }
+.car-copy { display: flex; }
+.style-card { flex: none; width: 15rem; padding-right: 1.5rem; }
+.style-card .ph { cursor: zoom-in; transition: transform .3s ease; }
+.style-card .ph:hover { transform: scale(1.03); }
+@media (min-width: 640px) { .style-card { width: 19rem; } }
+.style-card h3 { margin-top: 1.25rem; font-size: 1.25rem; }
+.style-card p { margin-top: .5rem; font-size: .875rem; line-height: 1.6; color: var(--muted); }
+.ctrls { margin-top: 1.25rem; display: flex; justify-content: center; gap: .75rem; }
+.ctrl { display: grid; place-items: center; width: 2.5rem; height: 2.5rem; border-radius: 999px; border: 1px solid var(--line); background: var(--bg); color: var(--fg); cursor: pointer; transition: background .2s, border-color .2s; }
+.ctrl:hover { background: var(--gold); border-color: var(--gold); }
+.ctrl svg { width: 1.25rem; height: 1.25rem; }
+
+/* ---------- PORTFÓLIO ---------- */
+#portfolio { padding-top: 2.8rem; }
+@media (min-width: 768px) { #portfolio { padding-top: 4.2rem; } }
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; }
+@media (min-width: 768px) { .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; } }
+.pf { display: block; padding: 0; border: 0; background: none; border-radius: .75rem; overflow: hidden; cursor: zoom-in; }
+.pf .ph { border-radius: .75rem; transition: transform .3s ease; }
+.pf:hover .ph { transform: scale(1.04); }
+
+/* ---------- SOBRE ---------- */
+.about { display: grid; align-items: center; gap: 2.5rem; }
+@media (min-width: 768px) { .about { grid-template-columns: minmax(0, .8fr) minmax(0, 1fr); gap: 3rem; } }
+@media (min-width: 1024px) { .about { gap: 4rem; } }
+.about-img { width: 100%; max-width: 22rem; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--r); justify-self: center; }
+@media (min-width: 768px) { .about-img { max-width: 24rem; justify-self: end; } }
+.about h2 { font-size: clamp(1.875rem, 1.5rem + 1.2vw, 2.25rem); line-height: 1.15; }
+.about p { margin-top: 1.25rem; line-height: 1.7; color: var(--muted); max-width: 38rem; }
+.link { display: inline-flex; align-items: center; gap: .5rem; font-size: .875rem; font-weight: 500; color: var(--accent); text-decoration: none; text-underline-offset: 4px; }
+.link:hover { text-decoration: underline; }
+.about .link { margin-top: 1.75rem; letter-spacing: .04em; text-transform: uppercase; }
+
+/* ---------- AVALIAÇÕES ---------- */
+.reviews-band { background: var(--soft); border-block: 1px solid var(--line); }
+.rev-badge { display: inline-flex; align-items: center; gap: .55rem; padding: .5rem 1rem; border: 1px solid var(--line); border-radius: 999px; background: var(--bg); text-decoration: none; }
+.rev-badge:hover { border-color: var(--gold); }
+.rev-badge .gl { width: 1.35rem; height: 1.35rem; }
+.rev-badge .stars { margin: 0; color: var(--gold); }
+.rev-badge .stars svg { width: 1.05rem; height: 1.05rem; }
+.rev-num { font-size: 1.5rem; font-weight: 600; line-height: 1; font-variant-numeric: tabular-nums; color: var(--fg); }
+.rev-badge span { font-size: .8rem; font-weight: 500; color: var(--muted); }
+.reviews { margin-top: 2.5rem; display: flex; align-items: stretch; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 1rem; scrollbar-width: none; }
+.reviews::-webkit-scrollbar { display: none; }
+/* todos os cartões com a mesma altura */
+.review { flex: none; width: 86%; height: 31rem; scroll-snap-align: start; display: flex; flex-direction: column; padding: 1.5rem; border: 1px solid var(--line); border-radius: .5rem; background: var(--bg); }
+@media (min-width: 640px) { .review { width: calc(50% - .5rem); } }
+@media (min-width: 1024px) { .review { width: calc(33.333% - .667rem); } }
+.review-head { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: .75rem; }
+.avatar { display: grid; place-items: center; width: 2.75rem; height: 2.75rem; border-radius: 999px; background: var(--ink); color: var(--gold); font-size: .875rem; font-weight: 600; text-transform: uppercase; }
+.review h3 { font: 500 1rem/1.3 var(--body); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.review time { display: block; margin-top: .2rem; font-size: .75rem; color: var(--muted); }
+.g-badge { display: grid; place-items: center; width: 2rem; height: 2rem; border-radius: 999px; border: 1px solid var(--line); box-shadow: 0 1px 2px rgb(0 0 0 / .08); }
+.g-badge svg { width: 1rem; height: 1rem; }
+.stars { display: flex; gap: .1rem; margin-top: 1.25rem; color: var(--gold); }
+.stars svg { width: 1rem; height: 1rem; }
+.review-text { margin-top: 1rem; font-size: .875rem; line-height: 1.65; min-height: 0; flex: 0 1 auto; overflow-y: auto; scrollbar-width: thin; }
+.review-text.clamp { display: -webkit-box; -webkit-line-clamp: 13; -webkit-box-orient: vertical; overflow: hidden; }
+.review.has-photos .review-text.clamp { -webkit-line-clamp: 4; }
+.more { align-self: flex-start; margin-top: .5rem; padding: 0; border: 0; background: none; color: var(--accent); font-size: .8rem; font-weight: 500; cursor: pointer; text-underline-offset: 3px; }
+.more:hover { text-decoration: underline; }
+.review-photos { margin-top: auto; padding-top: 1rem; flex: none; height: 14rem; display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: .4rem; }
+.review-photo { display: block; height: 100%; min-height: 0; padding: 0; border: 0; background: none; border-radius: .375rem; overflow: hidden; cursor: zoom-in; }
+.review-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .3s ease; }
+.review-photo:hover img { transform: scale(1.04); }
+
+/* ---------- ORÇAMENTO / AGENDAMENTO ---------- */
+.quote { background: var(--ink); color: var(--hero-fg); }
+.quote .lead { color: var(--hero-muted); }
+.quote strong { color: var(--gold); font-weight: 600; }
+.quote-box { max-width: 36rem; margin: 0 auto; }
+.arrow-down { display: inline-block; width: 1rem; height: 1rem; margin-left: .2rem; vertical-align: -.2em; color: var(--gold); animation: nudge 1.6s ease-in-out infinite; }
+@keyframes nudge { 50% { transform: translateY(3px); } }
+@media (prefers-reduced-motion: reduce) { .arrow-down { animation: none; } }
+.btn-cta {
+  display: flex; align-items: center; justify-content: center; gap: .75rem; width: 100%; margin-top: 2rem; padding: 1.1rem 1.5rem;
+  border-radius: 999px; background: var(--gold); color: #000; text-decoration: none; text-align: center;
+  font-size: 1rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; transition: transform .2s ease, filter .2s;
+}
+.btn-cta:hover { transform: scale(1.02); filter: brightness(1.08); }
+.btn-cta svg { width: 1.3rem; height: 1.3rem; flex: none; }
+@media (max-width: 440px) { .btn-cta { font-size: .85rem; letter-spacing: .03em; padding-inline: 1rem; } }
+
+/* ---------- LOCALIZAÇÃO ---------- */
+.loc { display: grid; gap: 2rem; align-items: center; }
+@media (min-width: 768px) { .loc { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 3.5rem; } }
+.loc h2 { font-size: clamp(1.875rem, 1.5rem + 1.2vw, 2.25rem); line-height: 1.15; }
+.loc-addr { margin-top: 1.25rem; display: flex; gap: .6rem; align-items: flex-start; font-style: normal; line-height: 1.6; color: var(--muted); }
+.loc-addr svg { width: 1.25rem; height: 1.25rem; flex: none; margin-top: .15rem; color: var(--accent); }
+.loc-note { margin-top: 1rem; display: flex; gap: .6rem; align-items: flex-start; line-height: 1.6; color: var(--fg); font-weight: 500; }
+.loc-text { margin-top: 1rem; padding-left: 1.85rem; max-width: 30rem; line-height: 1.7; color: var(--muted); }
+.loc-note svg { width: 1.25rem; height: 1.25rem; flex: none; margin-top: .15rem; color: var(--accent); }
+.map { position: relative; width: 100%; aspect-ratio: 4 / 3; border-radius: .75rem; overflow: hidden; background: var(--soft); border: 1px solid var(--line); }
+.map iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.map-ph { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .6rem; color: var(--fg); font-size: .85rem; font-weight: 500; text-decoration: none; background: radial-gradient(circle at 50% 45%, #fff 0, var(--soft) 70%); }
+.map-ph svg { width: 2.25rem; height: 2.25rem; color: var(--accent); }
+.map-ph:hover span { text-decoration: underline; text-underline-offset: 3px; }
+
+/* ---------- RODAPÉ ---------- */
+.foot-links { display: flex; flex-wrap: wrap; justify-content: center; gap: .4rem 1.25rem; font-size: .8rem; }
+.foot-links a { display: inline-flex; align-items: center; gap: .4rem; color: var(--hero-muted); text-decoration: none; transition: color .2s; }
+.foot-links a:hover { color: var(--gold); }
+.foot-links svg { width: 1rem; height: 1rem; }
+footer { background: var(--ink); color: var(--hero-fg); border-top: 1px solid rgb(218 198 90 / .3); }
+.foot { padding-block: 1.75rem; display: flex; flex-direction: column; align-items: center; gap: .35rem; text-align: center; }
+.foot-row { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: .4rem .75rem; }
+.foot > * + * { margin-top: .35rem; }
+.foot-brand img { display: block; width: auto; height: 1.75rem; }
+.copy { font-size: .7rem; color: #a8a8a8; }
+
+/* ---------- LIGHTBOX ---------- */
+.lightbox { position: fixed; inset: 0; z-index: 50; display: flex; align-items: center; justify-content: center; padding: 1rem; background: rgb(0 0 0 / .94); }
+.lb-media img { max-width: 92vw; max-height: 82vh; width: auto; height: auto; border-radius: .5rem; }
+.lb-btn { position: absolute; display: grid; place-items: center; padding: .5rem; border: 0; border-radius: 999px; background: rgb(255 255 255 / .12); color: #fff; cursor: pointer; }
+.lb-btn:hover { background: rgb(255 255 255 / .22); }
+.lb-btn svg { width: 1.5rem; height: 1.5rem; }
+.lb-close { top: calc(1rem + env(safe-area-inset-top, 0px)); right: calc(1rem + env(safe-area-inset-right, 0px)); }
+.lb-prev { left: calc(.75rem + env(safe-area-inset-left, 0px)); }
+.lb-next { right: calc(.75rem + env(safe-area-inset-right, 0px)); }
+.lightbox.single .lb-prev, .lightbox.single .lb-next { display: none; }
+.lb-caption { position: absolute; left: 1rem; right: 1rem; bottom: calc(1rem + env(safe-area-inset-bottom, 0px)); text-align: center; color: #e5e5e5; font-size: .8rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .marquee-track { animation: none; }
+  .btn-cta, .pf .ph, .review-photo img { transition: none; }
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-ig" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></symbol>
+    <symbol id="i-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></symbol>
+    <symbol id="i-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></symbol>
+    <symbol id="i-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+    <symbol id="i-ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></symbol>
+    <symbol id="i-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M9 15l2 2 4-4"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24" fill="currentColor"><path d="M11.5 2.3a.6.6 0 0 1 1 0l2.6 5.4 5.9.8a.6.6 0 0 1 .3 1l-4.3 4.2 1 5.9a.6.6 0 0 1-.8.6L12 17.4l-5.3 2.8a.6.6 0 0 1-.8-.6l1-5.9-4.3-4.2a.6.6 0 0 1 .3-1l5.9-.8Z"/></symbol>
+    <symbol id="i-g" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C36.9 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"/></symbol>
+    <symbol id="i-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+  </defs>
+</svg>
+
+<header class="hero">
+  <nav class="lang" id="lang" data-a="aria-label:langAria" aria-label="Idioma">
+    <button type="button" class="lang-cur" id="lang-cur" aria-haspopup="true" aria-expanded="false" aria-controls="lang-menu"><span id="lang-flag"></span><span id="lang-code">PT</span><svg class="chev" aria-hidden="true"><use href="#i-chev"/></svg></button>
+    <ul class="lang-menu" id="lang-menu" role="menu" hidden></ul>
+  </nav>
+  <img class="hero-img" src="assets/banner-elisa.webp" srcset="assets/banner-elisa-800.webp 800w, assets/banner-elisa.webp 1400w" sizes="(min-width: 768px) 56vw, 100vw" width="1400" height="1866" fetchpriority="high" decoding="async" data-a="alt:heroAlt" alt="Elisa Ceccarelli tatuando um antebraço, de regata preta e luvas pretas, concentrada no trabalho">
+  <div class="wrap hero-inner">
+    <div class="hero-copy">
+      <p class="brand"><img class="brand-logo" src="assets/logo-elisa.webp" width="449" height="90" alt="Elisa Tattoo" fetchpriority="high" decoding="async"></p>
+      <h1 data-t="h1">Linhas finas <span class="nw">&amp; microrrealismo</span></h1>
+      <p class="hero-sub" data-t="heroSub">Tatuagens delicadas e personalizadas, que combinam precisão, sensibilidade e riqueza de detalhes para transformar cada ideia em uma arte única.</p>
+    </div>
+  </div>
+  <div class="marquee" aria-hidden="true"><div class="marquee-track" id="marquee"></div></div>
+</header>
+
+<main>
+  <section class="projects">
+    <div class="wrap section">
+      <h2 class="h2" style="margin-bottom:2.5rem" data-t="projetos">Projetos recentes</h2>
+      <div id="car" data-a="aria-label:projetos" aria-label="Projetos recentes">
+        <div class="car-view" id="car-view"><div class="car-track" id="car-track"></div></div>
+        <div class="ctrls">
+          <button type="button" class="ctrl" id="car-prev" data-a="aria-label:projAnt" aria-label="Projeto anterior"><svg><use href="#i-left"/></svg></button>
+          <button type="button" class="ctrl" id="car-next" data-a="aria-label:projProx" aria-label="Próximo projeto"><svg><use href="#i-right"/></svg></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap section" id="portfolio" data-a="aria-label:portfolio" aria-label="Portfólio">
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <section class="wrap section" id="sobre">
+    <div class="about">
+      <img class="about-img" src="assets/sobre-elisa.webp" srcset="assets/sobre-elisa-480.webp 480w, assets/sobre-elisa.webp 800w" sizes="(min-width: 768px) 24rem, 22rem" width="800" height="1000" loading="lazy" decoding="async" data-a="alt:aboutAlt" alt="Retrato em preto e branco de Elisa Ceccarelli, de jaqueta de couro preta, ao lado de um bonde">
+      <div>
+        <h2>Elisa Ceccarelli</h2>
+        <p data-t="sobre1">Meu nome é Elisa Ceccarelli, nasci em Roma e sou apaixonada por desenho desde criança. Estudei em uma escola de ensino médio voltada para a arte e me formei em Escultura pela Academia de Belas Artes.</p>
+        <p data-t="sobre2">Há cerca de seis anos, iniciei minha jornada como tatuadora, trabalhando em estúdios, participações especiais e convenções que ajudaram a moldar e enriquecer meu estilo. Atualmente, resido em Zurique, onde continuo atuando como tatuadora. Sou especializada em linhas finas e microrrealismo, estilos que refletem minha precisão e sensibilidade artística.</p>
+        <p data-t="sobre3">Com uma sólida formação em desenho, crio cada tatuagem do zero, em estreita colaboração com meus clientes, sempre buscando um resultado único e personalizado.</p>
+        <a class="link" href="https://www.instagram.com/elisa.tattoo__/" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#i-ig"/></svg>@elisa.tattoo__</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="reviews-band" id="avaliacoes">
+    <div class="wrap section">
+      <div style="text-align:center">
+        <a class="rev-badge js-maps" id="rev-badge" hidden href="#" target="_blank" rel="noopener noreferrer">
+          <svg class="gl" aria-hidden="true"><use href="#i-g"/></svg>
+          <b class="rev-num" id="rev-num"></b>
+          <span class="stars" aria-hidden="true" id="badge-stars"></span>
+          <span id="rev-total"></span>
+        </a>
+        <h2 class="h2" style="margin-top:1.25rem" data-t="avTitulo">O que dizem os clientes</h2>
+        <p class="lead" data-t="avLead">Avaliações reais de clientes que já fizeram suas tatuagens com Elisa Ceccarelli, diretamente do Google.</p>
+      </div>
+      <div id="reviews-box" hidden>
+        <div class="reviews" id="reviews" data-a="aria-label:avAria" aria-label="Avaliações de clientes"></div>
+        <div class="ctrls" style="margin-top:1rem">
+          <button type="button" class="ctrl" id="rev-prev" data-a="aria-label:avAnt" aria-label="Avaliação anterior"><svg><use href="#i-left"/></svg></button>
+          <button type="button" class="ctrl" id="rev-next" data-a="aria-label:avProx" aria-label="Próxima avaliação"><svg><use href="#i-right"/></svg></button>
+        </div>
+      </div>
+      <div style="margin-top:2.25rem;text-align:center">
+        <a class="link js-maps" href="#" target="_blank" rel="noopener noreferrer"><span data-t="avLink">Ver todas as avaliações no Google</span><svg class="icon"><use href="#i-ext"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap section" id="localizacao">
+    <div class="loc">
+      <div>
+        <h2 data-t="locTitulo">Onde estamos</h2>
+        <address class="loc-addr"><svg aria-hidden="true"><use href="#i-pin"/></svg><span data-t="locEnd">Birmensdorferstrasse 114<br>8003 Zurique, Suíça</span></address>
+        <p class="loc-note"><svg aria-hidden="true"><use href="#i-clock"/></svg><span data-t="locAviso">Atendimento mediante agendamento de consulta.</span></p>
+        <p class="loc-text" data-t="locTexto">Durante a consulta, podemos conversar sobre sua ideia, esclarecer dúvidas e desenvolver um projeto de tatuagem totalmente personalizado.</p>
+      </div>
+      <div class="map" id="map"><a class="map-ph js-maps" href="#" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#i-pin"/></svg><span data-t="locVerMapa">Ver no Google Maps</span></a></div>
+    </div>
+  </section>
+
+  <section class="quote" id="orcamento">
+    <div class="wrap section">
+      <div class="quote-box">
+        <h2 class="h2" data-t="orcTitulo">Preencha o formulário e agende sua tatuagem.</h2>
+        <a class="btn-cta js-agendar" href="#" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-cal"/></svg><span data-t="orcBotao">Preencha o formulário</span></a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div class="foot-row">
+      <p class="foot-brand"><img src="assets/logo-elisa.webp" width="449" height="90" alt="Elisa Tattoo" loading="lazy" decoding="async"></p>
+      <span class="foot-links"><a href="https://www.instagram.com/elisa.tattoo__/" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#i-ig"/></svg>@elisa.tattoo__</a></span>
+    </div>
+    <p class="copy">© <span id="year">2026</span> Elisa Tattoo. <span data-t="direitos">Todos os direitos reservados.</span></p>
+  </div>
+</footer>
+
+<div class="lightbox" id="lb" role="dialog" aria-modal="true" data-a="aria-label:lbAria" aria-label="Foto ampliada" hidden>
+  <button type="button" class="lb-btn lb-close" id="lb-close" data-a="aria-label:lbFechar" aria-label="Fechar"><svg><use href="#i-x"/></svg></button>
+  <button type="button" class="lb-btn lb-prev" id="lb-prev" data-a="aria-label:lbAnt" aria-label="Foto anterior"><svg><use href="#i-left"/></svg></button>
+  <div class="lb-media" id="lb-media"></div>
+  <button type="button" class="lb-btn lb-next" id="lb-next" data-a="aria-label:lbProx" aria-label="Próxima foto"><svg><use href="#i-right"/></svg></button>
+  <p class="lb-caption" id="lb-caption"></p>
+</div>
+
+<script>
+/* ============ CONTEÚDO ============
+   Fotos: "assets/nome.webp" (cada uma tem uma versão menor "-480" para celular).
+   PENDENTE: seção de preço ainda é a do projeto-base. */
+const site = {
+  instagram: "https://www.instagram.com/elisa.tattoo__/",
+  /* Google Meu Negócio / Google Maps da Elisa: avaliações, localização e mapa */
+  maps: "https://www.google.com/maps?cid=16545291035933872277&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAMYASAF",
+  mapsEmbed: "https://maps.google.com/maps?q=Birmensdorferstrasse%20114%2C%208003%20Z%C3%BCrich%2C%20Schweiz&z=16&output=embed",
+  /* formulário oficial de agendamento: todos os botões de conversão, em qualquer idioma */
+  agendamento: "https://marcus24.yayforms.link/kaLqoWX",
+  /* carrossel "Projetos recentes" — textos em TXT.*.estilos, na mesma ordem */
+  estilos: [
+    { img: "assets/projeto-criacao.webp" },
+    { img: "assets/projeto-poseidon.webp" },
+    { img: "assets/projeto-ornamental.webp" },
+    { img: "assets/projeto-busto.webp" },
+  ],
+  /* Avaliações do Google da Elisa (dados reais do perfil — não inventar).
+     google.nota e google.total: o selo só aparece quando os dois estiverem preenchidos.
+     Cada avaliação: { nome: "Nome", meses: 2, idioma: "de", texto: "texto original", fotos: ["assets/..."] }
+     Enquanto a lista estiver vazia, a seção mostra só o título, a descrição e o link para o Google. */
+  google: { nota: null, total: null },
+  avaliacoes: [],
+  /* portfólio — descrições em TXT.*.portfolio, na mesma ordem */
+  portfolio: ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"].map((n) => `assets/elisa-${n}.webp`),
+};
+
+/* ============ IDIOMAS ============
+   Ordem do seletor: Inglês, Italiano, Alemão, Francês, Português, Espanhol.
+   Português é o idioma de referência (textos lidos da própria página). */
+const FLAGS = {
+  en: '<rect width="30" height="20" fill="#B22234"/><g fill="#fff"><rect y="1.54" width="30" height="1.54"/><rect y="4.62" width="30" height="1.54"/><rect y="7.69" width="30" height="1.54"/><rect y="10.77" width="30" height="1.54"/><rect y="13.85" width="30" height="1.54"/><rect y="16.92" width="30" height="1.54"/></g><rect width="12" height="10.77" fill="#3C3B6E"/>',
+  it: '<rect width="10" height="20" fill="#009246"/><rect x="10" width="10" height="20" fill="#fff"/><rect x="20" width="10" height="20" fill="#CE2B37"/>',
+  de: '<rect width="30" height="6.67" fill="#000"/><rect y="6.67" width="30" height="6.67" fill="#DD0000"/><rect y="13.33" width="30" height="6.67" fill="#FFCE00"/>',
+  fr: '<rect width="10" height="20" fill="#0055A4"/><rect x="10" width="10" height="20" fill="#fff"/><rect x="20" width="10" height="20" fill="#EF4135"/>',
+  pt: '<rect width="30" height="20" fill="#009C3B"/><path d="M15 2.2 27.6 10 15 17.8 2.4 10Z" fill="#FFDF00"/><circle cx="15" cy="10" r="4.3" fill="#002776"/><path d="M10.9 9.1c2.7-.6 5.6-.2 8.2 1.4" stroke="#fff" stroke-width=".7" fill="none"/>',
+  es: '<rect width="30" height="20" fill="#AA151B"/><rect y="5" width="30" height="10" fill="#F1BF00"/>',
+};
+const LANGS = [["en", "English"], ["it", "Italiano"], ["de", "Deutsch"], ["fr", "Français"], ["pt", "Português"], ["es", "Español"]];
+
+/* "t" = conteúdo de elementos com data-t; "a" = atributos de elementos com data-a. */
+const TXT = {
+  pt: {
+    lang: "pt-BR",
+    desc: "Elisa Tattoo: linhas finas e microrrealismo. Tatuagens delicadas e personalizadas, que combinam precisão, sensibilidade e riqueza de detalhes para transformar cada ideia em uma arte única.",
+    mapa: "Mapa do estúdio Elisa Tattoo",
+    rev: { tempo: (n) => `há ${n} ${n === 1 ? "mês" : "meses"}`, mais: "Ler mais", menos: "Ler menos", googleAria: "Avaliação do Google", starsAria: "5 de 5 estrelas", total: (n) => `${n} ${n === 1 ? "avaliação" : "avaliações"}`, foto: "Foto enviada pelo cliente na avaliação" },
+    ampliar: "Ampliar: ",
+    marquee: ["LINHAS FINAS", "MICRORREALISMO", "DELICADEZA", "PRECISÃO", "SENSIBILIDADE", "RIQUEZA DE DETALHES", "PROJETOS PERSONALIZADOS"],
+    estilos: [
+      ["A Criação de Adão", "Releitura do afresco de Michelangelo com anotações manuscritas, geometria e uma chave, no peito.", "Releitura de A Criação de Adão, de Michelangelo, com anotações manuscritas, triângulos, flor-de-lis e uma chave, no peito"],
+      ["Poseidon", "O deus dos mares com tridente, ondas e um veleiro, emoldurado por linhas e uma frase em italiano.", "Poseidon com tridente, ondas, veleiro e raios, emoldurado por linhas e uma frase em italiano, no braço"],
+      ["Ornamental", "Composição ornamental em linhas finas que acompanha a coluna e se abre pelos ombros.", "Tatuagem ornamental em linhas finas cobrindo as costas, da nuca à lombar"],
+      ["Busto clássico", "Rosto de estátua clássica dividido por linhas geométricas e fragmentos de pedra, no braço.", "Rosto de estátua clássica dividido por uma linha diagonal, com fragmentos de pedra e linhas geométricas, no braço"],
+    ],
+    portfolio: [
+      "Figura alada em queda com sol, rosa dos ventos e frases em inglês, em linhas finas no antebraço",
+      "Tartaruga marinha em microrrealismo com respingos de água, no braço",
+      "Personagens dos filmes do Studio Ghibli caminhando em fila, em linhas finas e pontilhismo no antebraço",
+      "Guerreira com elmo alado, escudo e espada, nas costas",
+      "Casal de pássaros num galho com flores, em microrrealismo no antebraço",
+      "A Criação de Adão com anotações e geometria no peito, em vista mais aberta",
+      "Beija-flor em microrrealismo no peito do pé",
+      "Lettering caligráfico em linhas finas ao longo da coluna",
+      "Retrato feminino com cocar de penas e armadura, no antebraço",
+      "Rosto de estátua clássica dividido por linhas geométricas, no braço",
+      "Ornamental em linhas finas nas costas, refletido no espelho do estúdio",
+      "Personagens do Studio Ghibli em linhas finas no antebraço, em outro ângulo",
+    ],
+    t: {}, a: {}, /* lidos da própria página */
+  },
+  en: {
+    lang: "en",
+    desc: "Elisa Tattoo: fine line and micro-realism. Delicate, custom tattoos that combine precision, sensitivity and rich detail to turn every idea into a one-of-a-kind piece of art.",
+    mapa: "Map of the Elisa Tattoo studio",
+    rev: { tempo: (n) => `${n} month${n === 1 ? "" : "s"} ago`, mais: "Read more", menos: "Read less", googleAria: "Google review", starsAria: "5 out of 5 stars", foto: "Photo posted by the client with the review", total: (n) => `${n} review${n === 1 ? "" : "s"}` },
+    ampliar: "Enlarge: ",
+    marquee: ["FINE LINE", "MICRO-REALISM", "DELICACY", "PRECISION", "SENSITIVITY", "RICH DETAIL", "CUSTOM PROJECTS"],
+    estilos: [
+      ["The Creation of Adam", "A reinterpretation of Michelangelo's fresco with handwritten notes, geometry and a key, on the chest.", "Reinterpretation of Michelangelo's The Creation of Adam with handwritten notes, triangles, a fleur-de-lis and a key, on the chest"],
+      ["Poseidon", "The god of the sea with his trident, waves and a sailing ship, framed by lines and an Italian phrase.", "Poseidon with a trident, waves, a sailing ship and lightning, framed by lines and an Italian phrase, on the arm"],
+      ["Ornamental", "A fine line ornamental composition that follows the spine and opens out across the shoulders.", "Fine line ornamental tattoo covering the back, from the neck to the lower back"],
+      ["Classical bust", "A classical statue's face split by geometric lines and stone fragments, on the arm.", "Classical statue's face split by a diagonal line, with stone fragments and geometric lines, on the arm"],
+    ],
+    portfolio: [
+      "Falling winged figure with a sun, compass rose and English phrases, fine line on the forearm",
+      "Micro-realism sea turtle with water splashes, on the arm",
+      "Studio Ghibli characters walking in a line, fine line and dotwork on the forearm",
+      "Woman warrior with a winged helmet, shield and sword, on the back",
+      "A pair of birds on a flowering branch, micro-realism on the forearm",
+      "The Creation of Adam with notes and geometry on the chest, wider view",
+      "Micro-realism hummingbird on the top of the foot",
+      "Fine line calligraphic lettering along the spine",
+      "Female portrait with a feather headdress and armor, on the forearm",
+      "Classical statue's face split by geometric lines, on the arm",
+      "Fine line ornamental back piece, reflected in the studio mirror",
+      "Studio Ghibli characters in fine line on the forearm, another angle",
+    ],
+    t: {
+      h1: 'Fine line <span class="nw">&amp; micro-realism</span>',
+      heroSub: "Delicate, custom tattoos that combine precision, sensitivity and rich detail to turn every idea into a one-of-a-kind piece of art.",
+      projetos: "Recent projects",
+      sobre1: "My name is Elisa Ceccarelli. I was born in Rome and have loved drawing since I was a child. I attended an art-focused high school and graduated in Sculpture from the Academy of Fine Arts.",
+      sobre2: "About six years ago, I began my journey as a tattoo artist, working in studios, guest spots and conventions that helped shape and enrich my style. I now live in Zurich, where I continue to work as a tattoo artist. I specialize in fine line and micro-realism, styles that reflect my precision and artistic sensitivity.",
+      sobre3: "With a solid background in drawing, I create every tattoo from scratch, in close collaboration with my clients, always aiming for a unique, personalized result.",
+      avTitulo: "What clients say", avLead: "Real reviews from clients who got their tattoos with Elisa Ceccarelli, straight from Google.", avLink: "See all reviews on Google",
+      orcTitulo: "Fill out the form and book your tattoo.",
+      locTitulo: "Find us", locEnd: "Birmensdorferstrasse 114<br>8003 Zurich, Switzerland", locAviso: "Visits by consultation appointment only.", locTexto: "During the consultation, we can talk about your idea, answer your questions and develop a fully custom tattoo design.", locVerMapa: "View on Google Maps", orcBotao: "Fill out the form", direitos: "All rights reserved.",
+    },
+    a: {
+      langAria: "Language", heroAlt: "Elisa Ceccarelli tattooing a forearm, in a black tank top and black gloves, focused on her work",
+      projetos: "Recent projects", projAnt: "Previous project", projProx: "Next project", portfolio: "Portfolio", avAria: "Client reviews", avAnt: "Previous review", avProx: "Next review",
+      aboutAlt: "Black and white portrait of Elisa Ceccarelli in a black leather jacket, standing beside a tram",
+      lbAria: "Enlarged photo", lbFechar: "Close", lbAnt: "Previous photo", lbProx: "Next photo",
+    },
+  },
+  it: {
+    lang: "it",
+    desc: "Elisa Tattoo: linee sottili e microrealismo. Tatuaggi delicati e personalizzati, che uniscono precisione, sensibilità e ricchezza di dettagli per trasformare ogni idea in un'opera d'arte unica.",
+    mapa: "Mappa dello studio Elisa Tattoo",
+    rev: { tempo: (n) => n === 1 ? "1 mese fa" : `${n} mesi fa`, mais: "Leggi tutto", menos: "Mostra meno", googleAria: "Recensione Google", starsAria: "5 stelle su 5", foto: "Foto pubblicata dal cliente nella recensione", total: (n) => `${n} ${n === 1 ? "recensione" : "recensioni"}` },
+    ampliar: "Ingrandisci: ",
+    marquee: ["LINEE SOTTILI", "MICROREALISMO", "DELICATEZZA", "PRECISIONE", "SENSIBILITÀ", "RICCHEZZA DI DETTAGLI", "PROGETTI PERSONALIZZATI"],
+    estilos: [
+      ["La Creazione di Adamo", "Reinterpretazione dell'affresco di Michelangelo con appunti manoscritti, geometrie e una chiave, sul petto.", "Reinterpretazione della Creazione di Adamo di Michelangelo con appunti manoscritti, triangoli, giglio e una chiave, sul petto"],
+      ["Poseidone", "Il dio del mare con tridente, onde e un veliero, incorniciato da linee e da una frase in italiano.", "Poseidone con tridente, onde, veliero e fulmini, incorniciato da linee e da una frase in italiano, sul braccio"],
+      ["Ornamentale", "Composizione ornamentale in linee sottili che segue la colonna e si apre sulle spalle.", "Tatuaggio ornamentale in linee sottili che copre la schiena, dalla nuca alla zona lombare"],
+      ["Busto classico", "Volto di statua classica diviso da linee geometriche e frammenti di pietra, sul braccio.", "Volto di statua classica diviso da una linea diagonale, con frammenti di pietra e linee geometriche, sul braccio"],
+    ],
+    portfolio: [
+      "Figura alata in caduta con sole, rosa dei venti e frasi in inglese, in linee sottili sull'avambraccio",
+      "Tartaruga marina in microrealismo con schizzi d'acqua, sul braccio",
+      "Personaggi dei film dello Studio Ghibli che camminano in fila, in linee sottili e puntinato sull'avambraccio",
+      "Guerriera con elmo alato, scudo e spada, sulla schiena",
+      "Coppia di uccellini su un ramo fiorito, in microrealismo sull'avambraccio",
+      "La Creazione di Adamo con appunti e geometrie sul petto, inquadratura più ampia",
+      "Colibrì in microrealismo sul collo del piede",
+      "Lettering calligrafico in linee sottili lungo la colonna",
+      "Ritratto femminile con copricapo di piume e armatura, sull'avambraccio",
+      "Volto di statua classica diviso da linee geometriche, sul braccio",
+      "Ornamentale in linee sottili sulla schiena, riflesso nello specchio dello studio",
+      "Personaggi dello Studio Ghibli in linee sottili sull'avambraccio, da un'altra angolazione",
+    ],
+    t: {
+      h1: 'Linee sottili <span class="nw">&amp; microrealismo</span>',
+      heroSub: "Tatuaggi delicati e personalizzati, che uniscono precisione, sensibilità e ricchezza di dettagli per trasformare ogni idea in un'opera d'arte unica.",
+      projetos: "Progetti recenti",
+      sobre1: "Mi chiamo Elisa Ceccarelli, sono nata a Roma e sono appassionata di disegno fin da bambina. Ho frequentato un liceo artistico e mi sono diplomata in Scultura all'Accademia di Belle Arti.",
+      sobre2: "Circa sei anni fa ho iniziato il mio percorso come tatuatrice, lavorando in studi, guest spot e convention che hanno contribuito a formare e arricchire il mio stile. Oggi vivo a Zurigo, dove continuo a lavorare come tatuatrice. Sono specializzata in linee sottili e microrealismo, stili che riflettono la mia precisione e la mia sensibilità artistica.",
+      sobre3: "Grazie a una solida formazione nel disegno, creo ogni tatuaggio da zero, in stretta collaborazione con i miei clienti, cercando sempre un risultato unico e personalizzato.",
+      avTitulo: "Cosa dicono i clienti", avLead: "Recensioni reali di clienti che si sono fatti tatuare da Elisa Ceccarelli, direttamente da Google.", avLink: "Vedi tutte le recensioni su Google",
+      orcTitulo: "Compila il modulo e prenota il tuo tatuaggio.",
+      locTitulo: "Dove siamo", locEnd: "Birmensdorferstrasse 114<br>8003 Zurigo, Svizzera", locAviso: "Si riceve su appuntamento, previa consulenza.", locTexto: "Durante la consulenza possiamo parlare della tua idea, chiarire ogni dubbio e sviluppare un progetto di tatuaggio completamente personalizzato.", locVerMapa: "Vedi su Google Maps", orcBotao: "Compila il modulo", direitos: "Tutti i diritti riservati.",
+    },
+    a: {
+      langAria: "Lingua", heroAlt: "Elisa Ceccarelli mentre tatua un avambraccio, con canotta nera e guanti neri, concentrata sul lavoro",
+      projetos: "Progetti recenti", projAnt: "Progetto precedente", projProx: "Progetto successivo", portfolio: "Portfolio", avAria: "Recensioni dei clienti", avAnt: "Recensione precedente", avProx: "Recensione successiva",
+      aboutAlt: "Ritratto in bianco e nero di Elisa Ceccarelli con giacca di pelle nera, accanto a un tram",
+      lbAria: "Foto ingrandita", lbFechar: "Chiudi", lbAnt: "Foto precedente", lbProx: "Foto successiva",
+    },
+  },
+  de: {
+    lang: "de",
+    desc: "Elisa Tattoo: Fine Line und Mikrorealismus. Filigrane, individuelle Tattoos, die Präzision, Feingefühl und Detailreichtum verbinden, um jede Idee in ein einzigartiges Kunstwerk zu verwandeln.",
+    mapa: "Karte des Studios Elisa Tattoo",
+    rev: { tempo: (n) => `vor ${n} ${n === 1 ? "Monat" : "Monaten"}`, mais: "Mehr lesen", menos: "Weniger anzeigen", googleAria: "Google-Bewertung", starsAria: "5 von 5 Sternen", foto: "Vom Kunden mit der Bewertung geteiltes Foto", total: (n) => `${n} ${n === 1 ? "Bewertung" : "Bewertungen"}` },
+    ampliar: "Vergrössern: ",
+    marquee: ["FEINE LINIEN", "MIKROREALISMUS", "ZARTHEIT", "PRÄZISION", "FEINGEFÜHL", "DETAILREICHTUM", "INDIVIDUELLE PROJEKTE"],
+    estilos: [
+      ["Die Erschaffung Adams", "Eine Neuinterpretation von Michelangelos Fresko mit handschriftlichen Notizen, Geometrie und einem Schlüssel, auf der Brust.", "Neuinterpretation von Michelangelos «Die Erschaffung Adams» mit handschriftlichen Notizen, Dreiecken, Lilie und einem Schlüssel, auf der Brust"],
+      ["Poseidon", "Der Gott des Meeres mit Dreizack, Wellen und einem Segelschiff, gerahmt von Linien und einem italienischen Spruch.", "Poseidon mit Dreizack, Wellen, Segelschiff und Blitzen, gerahmt von Linien und einem italienischen Spruch, am Arm"],
+      ["Ornamental", "Eine ornamentale Komposition in feinen Linien, die der Wirbelsäule folgt und sich über die Schultern öffnet.", "Ornamentales Tattoo in feinen Linien über den ganzen Rücken, vom Nacken bis zum unteren Rücken"],
+      ["Klassische Büste", "Das Gesicht einer klassischen Statue, geteilt durch geometrische Linien und Steinfragmente, am Arm.", "Gesicht einer klassischen Statue, durch eine diagonale Linie geteilt, mit Steinfragmenten und geometrischen Linien, am Arm"],
+    ],
+    portfolio: [
+      "Fallende geflügelte Figur mit Sonne, Kompassrose und englischen Sätzen, in feinen Linien am Unterarm",
+      "Meeresschildkröte im Mikrorealismus mit Wasserspritzern, am Arm",
+      "Figuren aus Studio-Ghibli-Filmen, die in einer Reihe laufen, in feinen Linien und Dotwork am Unterarm",
+      "Kriegerin mit Flügelhelm, Schild und Schwert, auf dem Rücken",
+      "Vogelpaar auf einem blühenden Zweig, im Mikrorealismus am Unterarm",
+      "Die Erschaffung Adams mit Notizen und Geometrie auf der Brust, weitere Ansicht",
+      "Kolibri im Mikrorealismus auf dem Fussrücken",
+      "Kalligrafischer Schriftzug in feinen Linien entlang der Wirbelsäule",
+      "Frauenporträt mit Federkopfschmuck und Rüstung, am Unterarm",
+      "Gesicht einer klassischen Statue, durch geometrische Linien geteilt, am Arm",
+      "Ornamentales Rückentattoo in feinen Linien, im Studiospiegel gespiegelt",
+      "Studio-Ghibli-Figuren in feinen Linien am Unterarm, andere Perspektive",
+    ],
+    t: {
+      h1: 'Feine Linien <span class="nw">&amp; Mikrorealismus</span>',
+      heroSub: "Filigrane, individuelle Tattoos, die Präzision, Feingefühl und Detailreichtum verbinden, um jede Idee in ein einzigartiges Kunstwerk zu verwandeln.",
+      projetos: "Aktuelle Projekte",
+      sobre1: "Mein Name ist Elisa Ceccarelli. Ich wurde in Rom geboren und zeichne leidenschaftlich gern, seit ich ein Kind bin. Ich habe ein Gymnasium mit künstlerischem Schwerpunkt besucht und an der Akademie der Bildenden Künste mein Studium in Bildhauerei abgeschlossen.",
+      sobre2: "Vor rund sechs Jahren habe ich meinen Weg als Tätowiererin begonnen – in Studios, bei Guest Spots und auf Conventions, die meinen Stil geprägt und bereichert haben. Heute lebe ich in Zürich, wo ich weiterhin als Tätowiererin arbeite. Ich bin auf feine Linien und Mikrorealismus spezialisiert – Stile, die meine Präzision und mein künstlerisches Feingefühl widerspiegeln.",
+      sobre3: "Mit einer fundierten Ausbildung im Zeichnen entwerfe ich jedes Tattoo von Grund auf, in enger Zusammenarbeit mit meinen Kundinnen und Kunden, und strebe stets ein einzigartiges, persönliches Ergebnis an.",
+      avTitulo: "Das sagen unsere Kunden", avLead: "Echte Bewertungen von Kundinnen und Kunden, die sich bei Elisa Ceccarelli tätowieren liessen – direkt von Google.", avLink: "Alle Bewertungen auf Google ansehen",
+      orcTitulo: "Fülle das Formular aus und buche dein Tattoo.",
+      locTitulo: "So findest du uns", locEnd: "Birmensdorferstrasse 114<br>8003 Zürich, Schweiz", locAviso: "Besuche nur nach vereinbartem Beratungstermin.", locTexto: "Bei der Beratung sprechen wir über deine Idee, klären offene Fragen und entwickeln ein ganz individuelles Tattoo-Design.", locVerMapa: "Auf Google Maps ansehen", orcBotao: "Formular ausfüllen", direitos: "Alle Rechte vorbehalten.",
+    },
+    a: {
+      langAria: "Sprache", heroAlt: "Elisa Ceccarelli beim Tätowieren eines Unterarms, in schwarzem Top und schwarzen Handschuhen, konzentriert bei der Arbeit",
+      projetos: "Aktuelle Projekte", projAnt: "Vorheriges Projekt", projProx: "Nächstes Projekt", portfolio: "Portfolio", avAria: "Kundenbewertungen", avAnt: "Vorherige Bewertung", avProx: "Nächste Bewertung",
+      aboutAlt: "Schwarz-Weiss-Porträt von Elisa Ceccarelli in schwarzer Lederjacke neben einem Tram",
+      lbAria: "Vergrössertes Foto", lbFechar: "Schliessen", lbAnt: "Vorheriges Foto", lbProx: "Nächstes Foto",
+    },
+  },
+  fr: {
+    lang: "fr",
+    desc: "Elisa Tattoo : traits fins et microréalisme. Des tatouages délicats et personnalisés, alliant précision, sensibilité et richesse des détails pour faire de chaque idée une œuvre d'art unique.",
+    mapa: "Carte du studio Elisa Tattoo",
+    rev: { tempo: (n) => `il y a ${n} mois`, mais: "Lire la suite", menos: "Réduire", googleAria: "Avis Google", starsAria: "5 étoiles sur 5", foto: "Photo publiée par le client avec son avis", total: (n) => `${n} avis` },
+    ampliar: "Agrandir : ",
+    marquee: ["TRAITS FINS", "MICRORÉALISME", "DÉLICATESSE", "PRÉCISION", "SENSIBILITÉ", "RICHESSE DES DÉTAILS", "PROJETS PERSONNALISÉS"],
+    estilos: [
+      ["La Création d'Adam", "Une relecture de la fresque de Michel-Ange avec annotations manuscrites, géométrie et une clé, sur la poitrine.", "Relecture de La Création d'Adam de Michel-Ange avec annotations manuscrites, triangles, fleur de lys et une clé, sur la poitrine"],
+      ["Poséidon", "Le dieu des mers avec son trident, des vagues et un voilier, encadré de lignes et d'une phrase en italien.", "Poséidon avec trident, vagues, voilier et éclairs, encadré de lignes et d'une phrase en italien, sur le bras"],
+      ["Ornemental", "Une composition ornementale en traits fins qui suit la colonne et s'ouvre sur les épaules.", "Tatouage ornemental en traits fins couvrant le dos, de la nuque au bas du dos"],
+      ["Buste classique", "Le visage d'une statue classique coupé par des lignes géométriques et des fragments de pierre, sur le bras.", "Visage de statue classique coupé par une ligne diagonale, avec fragments de pierre et lignes géométriques, sur le bras"],
+    ],
+    portfolio: [
+      "Figure ailée en chute avec soleil, rose des vents et phrases en anglais, en traits fins sur l'avant-bras",
+      "Tortue de mer en microréalisme avec éclaboussures d'eau, sur le bras",
+      "Personnages des films du Studio Ghibli marchant en file, en traits fins et dotwork sur l'avant-bras",
+      "Guerrière au casque ailé, avec bouclier et épée, dans le dos",
+      "Couple d'oiseaux sur une branche fleurie, en microréalisme sur l'avant-bras",
+      "La Création d'Adam avec annotations et géométrie sur la poitrine, vue plus large",
+      "Colibri en microréalisme sur le dessus du pied",
+      "Lettering calligraphique en traits fins le long de la colonne",
+      "Portrait féminin avec coiffe de plumes et armure, sur l'avant-bras",
+      "Visage de statue classique coupé par des lignes géométriques, sur le bras",
+      "Pièce ornementale en traits fins dans le dos, reflétée dans le miroir du studio",
+      "Personnages du Studio Ghibli en traits fins sur l'avant-bras, autre angle",
+    ],
+    t: {
+      h1: 'Traits fins <span class="nw">&amp; microréalisme</span>',
+      heroSub: "Des tatouages délicats et personnalisés, alliant précision, sensibilité et richesse des détails pour faire de chaque idée une œuvre d'art unique.",
+      projetos: "Projets récents",
+      sobre1: "Je m'appelle Elisa Ceccarelli, je suis née à Rome et je suis passionnée de dessin depuis l'enfance. J'ai suivi un lycée à orientation artistique et je suis diplômée en sculpture de l'Académie des Beaux-Arts.",
+      sobre2: "Il y a environ six ans, j'ai commencé mon parcours de tatoueuse en travaillant dans des studios, en guest spots et lors de conventions qui ont contribué à façonner et enrichir mon style. Je vis aujourd'hui à Zurich, où je continue d'exercer comme tatoueuse. Je suis spécialisée dans les traits fins et le microréalisme, des styles qui reflètent ma précision et ma sensibilité artistique.",
+      sobre3: "Forte d'une solide formation en dessin, je crée chaque tatouage de A à Z, en étroite collaboration avec mes clients, toujours à la recherche d'un résultat unique et personnalisé.",
+      avTitulo: "Ce que disent les clients", avLead: "De vrais avis de clients qui se sont fait tatouer par Elisa Ceccarelli, directement depuis Google.", avLink: "Voir tous les avis sur Google",
+      orcTitulo: "Remplissez le formulaire et réservez votre tatouage.",
+      locTitulo: "Où nous trouver", locEnd: "Birmensdorferstrasse 114<br>8003 Zurich, Suisse", locAviso: "Accueil uniquement sur rendez-vous de consultation.", locTexto: "Lors de la consultation, nous pourrons parler de votre idée, répondre à vos questions et développer un projet de tatouage entièrement personnalisé.", locVerMapa: "Voir sur Google Maps", orcBotao: "Remplir le formulaire", direitos: "Tous droits réservés.",
+    },
+    a: {
+      langAria: "Langue", heroAlt: "Elisa Ceccarelli en train de tatouer un avant-bras, en débardeur noir et gants noirs, concentrée sur son travail",
+      projetos: "Projets récents", projAnt: "Projet précédent", projProx: "Projet suivant", portfolio: "Portfolio", avAria: "Avis des clients", avAnt: "Avis précédent", avProx: "Avis suivant",
+      aboutAlt: "Portrait en noir et blanc d'Elisa Ceccarelli en veste en cuir noire, à côté d'un tramway",
+      lbAria: "Photo agrandie", lbFechar: "Fermer", lbAnt: "Photo précédente", lbProx: "Photo suivante",
+    },
+  },
+  es: {
+    lang: "es",
+    desc: "Elisa Tattoo: líneas finas y microrrealismo. Tatuajes delicados y personalizados, que combinan precisión, sensibilidad y riqueza de detalles para transformar cada idea en una obra de arte única.",
+    mapa: "Mapa del estudio Elisa Tattoo",
+    rev: { tempo: (n) => `hace ${n} ${n === 1 ? "mes" : "meses"}`, mais: "Leer más", menos: "Leer menos", googleAria: "Reseña de Google", starsAria: "5 de 5 estrellas", foto: "Foto enviada por el cliente en la reseña", total: (n) => `${n} ${n === 1 ? "reseña" : "reseñas"}` },
+    ampliar: "Ampliar: ",
+    marquee: ["LÍNEAS FINAS", "MICRORREALISMO", "DELICADEZA", "PRECISIÓN", "SENSIBILIDAD", "RIQUEZA DE DETALLES", "PROYECTOS PERSONALIZADOS"],
+    estilos: [
+      ["La creación de Adán", "Relectura del fresco de Miguel Ángel con anotaciones manuscritas, geometría y una llave, en el pecho.", "Relectura de La creación de Adán de Miguel Ángel con anotaciones manuscritas, triángulos, flor de lis y una llave, en el pecho"],
+      ["Poseidón", "El dios del mar con tridente, olas y un velero, enmarcado por líneas y una frase en italiano.", "Poseidón con tridente, olas, velero y rayos, enmarcado por líneas y una frase en italiano, en el brazo"],
+      ["Ornamental", "Composición ornamental en líneas finas que sigue la columna y se abre por los hombros.", "Tatuaje ornamental en líneas finas que cubre la espalda, de la nuca a la zona lumbar"],
+      ["Busto clásico", "Rostro de estatua clásica dividido por líneas geométricas y fragmentos de piedra, en el brazo.", "Rostro de estatua clásica dividido por una línea diagonal, con fragmentos de piedra y líneas geométricas, en el brazo"],
+    ],
+    portfolio: [
+      "Figura alada cayendo con sol, rosa de los vientos y frases en inglés, en líneas finas en el antebrazo",
+      "Tortuga marina en microrrealismo con salpicaduras de agua, en el brazo",
+      "Personajes de las películas de Studio Ghibli caminando en fila, en líneas finas y puntillismo en el antebrazo",
+      "Guerrera con yelmo alado, escudo y espada, en la espalda",
+      "Pareja de pájaros en una rama con flores, en microrrealismo en el antebrazo",
+      "La creación de Adán con anotaciones y geometría en el pecho, vista más amplia",
+      "Colibrí en microrrealismo en el empeine",
+      "Lettering caligráfico en líneas finas a lo largo de la columna",
+      "Retrato femenino con tocado de plumas y armadura, en el antebrazo",
+      "Rostro de estatua clásica dividido por líneas geométricas, en el brazo",
+      "Ornamental en líneas finas en la espalda, reflejado en el espejo del estudio",
+      "Personajes de Studio Ghibli en líneas finas en el antebrazo, desde otro ángulo",
+    ],
+    t: {
+      h1: 'Líneas finas <span class="nw">y microrrealismo</span>',
+      heroSub: "Tatuajes delicados y personalizados, que combinan precisión, sensibilidad y riqueza de detalles para transformar cada idea en una obra de arte única.",
+      projetos: "Proyectos recientes",
+      sobre1: "Me llamo Elisa Ceccarelli, nací en Roma y me apasiona el dibujo desde niña. Estudié en un instituto de bachillerato artístico y me licencié en Escultura en la Academia de Bellas Artes.",
+      sobre2: "Hace unos seis años comencé mi trayectoria como tatuadora, trabajando en estudios, guest spots y convenciones que ayudaron a moldear y enriquecer mi estilo. Actualmente vivo en Zúrich, donde sigo trabajando como tatuadora. Me especializo en líneas finas y microrrealismo, estilos que reflejan mi precisión y sensibilidad artística.",
+      sobre3: "Con una sólida formación en dibujo, creo cada tatuaje desde cero, en estrecha colaboración con mis clientes, buscando siempre un resultado único y personalizado.",
+      avTitulo: "Lo que dicen los clientes", avLead: "Reseñas reales de clientes que ya se tatuaron con Elisa Ceccarelli, directamente de Google.", avLink: "Ver todas las reseñas en Google",
+      orcTitulo: "Rellena el formulario y reserva tu tatuaje.",
+      locTitulo: "Dónde estamos", locEnd: "Birmensdorferstrasse 114<br>8003 Zúrich, Suiza", locAviso: "Atención con cita previa de consulta.", locTexto: "Durante la consulta, podemos hablar sobre tu idea, resolver tus dudas y desarrollar un diseño de tatuaje totalmente personalizado.", locVerMapa: "Ver en Google Maps", orcBotao: "Rellenar el formulario", direitos: "Todos los derechos reservados.",
+    },
+    a: {
+      langAria: "Idioma", heroAlt: "Elisa Ceccarelli tatuando un antebrazo, con camiseta de tirantes negra y guantes negros, concentrada en su trabajo",
+      projetos: "Proyectos recientes", projAnt: "Proyecto anterior", projProx: "Siguiente proyecto", portfolio: "Portafolio", avAria: "Reseñas de clientes", avAnt: "Reseña anterior", avProx: "Siguiente reseña",
+      aboutAlt: "Retrato en blanco y negro de Elisa Ceccarelli con chaqueta de cuero negra, junto a un tranvía",
+      lbAria: "Foto ampliada", lbFechar: "Cerrar", lbAnt: "Foto anterior", lbProx: "Foto siguiente",
+    },
+  },
+};
+
+/* ============ CÓDIGO ============ */
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+let L = TXT.pt, CUR = "pt";
+const STARS = '<svg aria-hidden="true"><use href="#i-star"/></svg>'.repeat(5);
+const flag = (c) => `<svg class="flag" viewBox="0 0 30 20" aria-hidden="true">${FLAGS[c]}</svg>`;
+
+/* links externos: valem para todos os idiomas */
+document.querySelectorAll(".js-maps").forEach((a) => { a.href = site.maps; });
+document.querySelectorAll(".js-agendar").forEach((a) => { a.href = site.agendamento; });
+
+function photo(src, alt, sizes, lazy = true) {
+  const small = src.replace(/\.webp$/, "-480.webp");
+  return `<span class="ph"><img src="${src}" srcset="${small} 480w, ${src} 900w" sizes="${sizes}" alt="${esc(alt)}"${lazy ? ' loading="lazy"' : ""} decoding="async" draggable="false"></span>`;
+}
+
+/* --- render --- */
+function renderMarquee() {
+  const w = [...L.marquee, ...L.marquee, ...L.marquee, ...L.marquee];
+  $("marquee").innerHTML = w.map((x) => `<span>${esc(x)} <b>•</b></span>`).join("");
+}
+function renderCarousel() {
+  const card = (e, i) => { const [tit, txt, alt] = L.estilos[i]; return `<article class="style-card">${photo(e.img, alt, "(min-width: 640px) 19rem, 15rem")}<h3>${esc(tit)}</h3><p>${esc(txt)}</p></article>`; };
+  $("car-track").innerHTML = [0, 1, 2, 3].map((c) => `<div class="car-copy"${c ? ' aria-hidden="true"' : ""}>${site.estilos.map(card).join("")}</div>`).join("");
+}
+function renderGrid() {
+  $("grid").innerHTML = site.portfolio.map((src, i) =>
+    `<button type="button" class="pf" data-i="${i}" aria-label="${esc(L.ampliar + L.portfolio[i])}">${photo(src, L.portfolio[i], "(min-width: 768px) 23rem, 50vw")}</button>`).join("");
+}
+
+/* --- seletor de idiomas (menu suspenso, funciona com mouse, toque e teclado) --- */
+(function () {
+  const cur = $("lang-cur"), menu = $("lang-menu");
+  menu.innerHTML = LANGS.map(([c, nome]) => `<li role="none"><button type="button" class="lang-opt" role="menuitemradio" aria-checked="false" data-lang="${c}" lang="${c}">${flag(c)}<span>${nome}</span><span class="code">${c.toUpperCase()}</span></button></li>`).join("");
+  const opts = () => [...menu.querySelectorAll(".lang-opt")];
+  const open = () => { menu.hidden = false; cur.setAttribute("aria-expanded", "true"); (menu.querySelector('[aria-checked="true"]') || opts()[0]).focus(); };
+  const close = (focus) => { menu.hidden = true; cur.setAttribute("aria-expanded", "false"); if (focus) cur.focus(); };
+  cur.addEventListener("click", () => (menu.hidden ? open() : close()));
+  cur.addEventListener("keydown", (e) => { if (e.key === "ArrowDown") { e.preventDefault(); open(); } });
+  menu.addEventListener("click", (e) => { const b = e.target.closest(".lang-opt"); if (b) { setLang(b.dataset.lang); close(true); } });
+  menu.addEventListener("keydown", (e) => {
+    const list = opts(), i = list.indexOf(document.activeElement);
+    if (e.key === "Escape") { e.preventDefault(); close(true); }
+    else if (e.key === "ArrowDown") { e.preventDefault(); list[(i + 1) % list.length].focus(); }
+    else if (e.key === "ArrowUp") { e.preventDefault(); list[(i - 1 + list.length) % list.length].focus(); }
+    else if (e.key === "Home") { e.preventDefault(); list[0].focus(); }
+    else if (e.key === "End") { e.preventDefault(); list[list.length - 1].focus(); }
+    else if (e.key === "Tab") close();
+  });
+  document.addEventListener("click", (e) => { if (!menu.hidden && !$("lang").contains(e.target)) close(); });
+})();
+
+document.querySelectorAll("[data-t]").forEach((el) => { TXT.pt.t[el.dataset.t] = el.innerHTML; });
+document.querySelectorAll("[data-a]").forEach((el) => { const [attr, k] = el.dataset.a.split(":"); TXT.pt.a[k] = el.getAttribute(attr); });
+const meta = document.querySelector('meta[name="description"]');
+
+function setLang(code, first) {
+  if (!TXT[code]) code = "pt";
+  CUR = code; L = TXT[code];
+  document.documentElement.lang = L.lang;
+  meta.content = L.desc;
+  document.querySelectorAll("[data-t]").forEach((el) => { el.innerHTML = L.t[el.dataset.t] ?? TXT.pt.t[el.dataset.t]; });
+  document.querySelectorAll("[data-a]").forEach((el) => { const [attr, k] = el.dataset.a.split(":"); el.setAttribute(attr, L.a[k] ?? TXT.pt.a[k]); });
+  /* seletor: bandeira e sigla do idioma atual */
+  const nome = LANGS.find(([c]) => c === code)[1];
+  $("lang-flag").innerHTML = flag(code);
+  $("lang-code").textContent = code.toUpperCase();
+  $("lang-cur").setAttribute("aria-label", `${L.a.langAria ?? TXT.pt.a.langAria}: ${nome}`);
+  document.querySelectorAll(".lang-opt").forEach((b) => b.setAttribute("aria-checked", String(b.dataset.lang === code)));
+  const f = $("map").querySelector("iframe"); if (f) f.title = L.mapa;
+  /* mantém o idioma no endereço (para compartilhar o link já no idioma escolhido) */
+  if (!first) { try { const u = new URL(location.href); u.searchParams.set("lang", code); history.replaceState(null, "", u); } catch (_) {} }
+  renderMarquee(); renderReviews();
+  if (first) { renderCarousel(); renderGrid(); return; }
+  /* carrossel e grade: só troca textos, sem recriar (não perde posição) */
+  document.querySelectorAll("#car-track .style-card").forEach((c, i) => {
+    const [tit, txt, alt] = L.estilos[i % site.estilos.length];
+    c.querySelector("h3").textContent = tit; c.querySelector("p").textContent = txt; c.querySelector("img").alt = alt;
+  });
+  document.querySelectorAll("#grid .pf").forEach((b) => { const alt = L.portfolio[+b.dataset.i]; b.setAttribute("aria-label", L.ampliar + alt); b.querySelector("img").alt = alt; });
+}
+/* abre em português; ?lang=en|it|de|fr|pt|es no endereço já abre no idioma */
+setLang((location.search.match(/[?&]lang=(pt|en|it|de|fr|es)\b/) || [])[1] || "pt", true);
+$("year").textContent = new Date().getFullYear();
+
+/* --- carrossel de projetos: contínuo, arrasto e setas --- */
+(function () {
+  const track = $("car-track"), view = $("car-view"), box = $("car");
+  const copy = () => track.firstElementChild;
+  const st = { paused: false, pos: 0, target: null, drag: null, moved: 0 };
+  let w = 0, visible = true, last = performance.now();
+  new ResizeObserver((en) => { const b = en[0].borderBoxSize; w = b && b[0] ? b[0].inlineSize : en[0].contentRect.width; }).observe(copy());
+  new IntersectionObserver((e) => { visible = e[0].isIntersecting; }, { rootMargin: "100px" }).observe(view);
+  function tick(ts) {
+    const dt = Math.min((ts - last) / 1000, 0.1); last = ts;
+    if (w > 0 && visible) {
+      if (st.drag) {}
+      else if (st.target !== null) { const d = st.target - st.pos; if (Math.abs(d) < .5) { st.pos = st.target; st.target = null; } else st.pos += d * Math.min(1, dt * 9); }
+      else if (!st.paused && !reduced && $("lb").hidden) st.pos += (w / 14) * dt;
+      const wrapBy = st.pos >= w ? -w : st.pos < 0 ? w : 0;
+      if (wrapBy) { st.pos += wrapBy; if (st.target !== null) st.target += wrapBy; if (st.drag) st.drag.pos += wrapBy; }
+      track.style.transform = `translate3d(${-st.pos}px,0,0)`;
+    }
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+  const step = (dir) => { const c = track.querySelector(".style-card"); st.target = (st.target ?? st.pos) + dir * (c ? c.offsetWidth : 280); };
+  $("car-prev").onclick = () => step(-1);
+  $("car-next").onclick = () => step(1);
+  box.addEventListener("mouseleave", () => { st.drag = null; view.classList.remove("dragging"); });
+  box.addEventListener("focusin", () => st.paused = true);
+  box.addEventListener("focusout", () => st.paused = false);
+  view.addEventListener("pointerdown", (e) => { st.drag = { x: e.clientX, pos: st.pos }; st.target = null; st.moved = 0; view.classList.add("dragging"); });
+  view.addEventListener("pointermove", (e) => { if (st.drag) { st.moved = Math.max(st.moved, Math.abs(e.clientX - st.drag.x)); st.pos = st.drag.pos - (e.clientX - st.drag.x); } });
+  view.addEventListener("click", (e) => {
+    const ph = e.target.closest(".style-card .ph"); if (!ph || st.moved > 6) return;
+    const i = [...track.querySelectorAll(".style-card")].indexOf(ph.closest(".style-card")) % site.estilos.length;
+    window.abrirFoto(site.estilos[i].img, L.estilos[i][2], ph);
+  });
+  const end = () => { st.drag = null; view.classList.remove("dragging"); };
+  view.addEventListener("pointerup", end);
+  view.addEventListener("pointercancel", end);
+})();
+
+/* --- avaliações --- */
+function renderReviews() {
+  const box = $("reviews"), g = site.google;
+  /* selo com nota e total: só com dados reais preenchidos */
+  const temSelo = g.nota != null && g.total != null;
+  $("rev-badge").hidden = !temSelo;
+  if (temSelo) { $("rev-num").textContent = g.nota.toLocaleString(L.lang, { minimumFractionDigits: 1, maximumFractionDigits: 1 }); $("rev-total").textContent = L.rev.total(g.total); }
+  $("reviews-box").hidden = !site.avaliacoes.length;
+  if (!site.avaliacoes.length) { box.innerHTML = ""; return; }
+  const order = site.avaliacoes.map((a, i) => i).sort((x, y) => !!(site.avaliacoes[y].fotos || []).length - !!(site.avaliacoes[x].fotos || []).length);
+  box.innerHTML = order.map((i) => {
+    const a = site.avaliacoes[i];
+    const tam = a.texto.length + (a.texto.split("\n").length - 1) * 35;
+    const longo = tam > ((a.fotos || []).length ? 150 : 480);
+    const ini = a.nome.replace(/[^\p{L} ]/gu, "").split(" ").filter(Boolean).slice(0, 2).map((p) => p[0]).join("");
+    const fotos = (a.fotos || []).length ? `<div class="review-photos">${a.fotos.map((src) => `<button type="button" class="review-photo" data-src="${src}" aria-label="${esc(L.rev.foto)}"><img src="${src}" alt="${esc(L.rev.foto)}" loading="lazy" decoding="async" draggable="false"></button>`).join("")}</div>` : "";
+    return `<article class="review${(a.fotos || []).length ? " has-photos" : ""}"><div class="review-head"><div class="avatar" aria-hidden="true">${esc(ini)}</div><div style="min-width:0"><h3>${esc(a.nome)}</h3><time>${esc(L.rev.tempo(a.meses))}</time></div><span class="g-badge" role="img" aria-label="${esc(L.rev.googleAria)}"><svg><use href="#i-g"/></svg></span></div><div class="stars" role="img" aria-label="${esc(L.rev.starsAria)}">${STARS}</div><p class="review-text clamp"${a.idioma ? ` lang="${esc(a.idioma)}"` : ""}>${esc(a.texto).replace(/\n/g, "<br>")}</p><button type="button" class="more"${longo ? "" : " hidden"}>${esc(L.rev.mais)}</button>${fotos}</article>`;
+  }).join("");
+}
+$("badge-stars").innerHTML = STARS;
+$("reviews").addEventListener("click", (e) => {
+  const b = e.target.closest(".more"); if (!b) return;
+  const p = b.previousElementSibling, open = p.classList.toggle("clamp");
+  b.textContent = open ? L.rev.mais : L.rev.menos;
+});
+(function () {
+  const box = $("reviews"), wrap = $("reviews-box");
+  let paused = false;
+  function scroll(dir) {
+    const c = box.querySelector(".review"), w = (c ? c.offsetWidth : box.clientWidth) + 16;
+    const behavior = reduced ? "auto" : "smooth";
+    if (dir === 1 && box.scrollLeft + box.clientWidth >= box.scrollWidth - 8) return box.scrollTo({ left: 0, behavior });
+    if (dir === -1 && box.scrollLeft <= 8) return box.scrollTo({ left: box.scrollWidth, behavior });
+    box.scrollBy({ left: dir * w, behavior });
+  }
+  $("rev-prev").onclick = () => scroll(-1);
+  $("rev-next").onclick = () => scroll(1);
+  ["mouseenter", "focusin", "pointerdown"].forEach((ev) => wrap.addEventListener(ev, () => paused = true));
+  ["mouseleave", "focusout", "pointerup"].forEach((ev) => wrap.addEventListener(ev, () => paused = false));
+  if (!reduced) setInterval(() => { if (!paused && !document.hidden && $("lb").hidden) scroll(1); }, 5000);
+})();
+
+/* --- mapa: só carrega quando a pessoa chega perto da seção --- */
+(function () {
+  const box = $("map");
+  const load = () => {
+    if (box.querySelector("iframe")) return;
+    const f = document.createElement("iframe");
+    f.src = site.mapsEmbed; f.loading = "lazy"; f.referrerPolicy = "strict-origin-when-cross-origin";
+    f.title = L.mapa; f.allowFullscreen = true; box.appendChild(f);
+    /* se a hospedagem bloquear mapas incorporados, some com o quadro e deixa o link "Ver no Google Maps" */
+    document.addEventListener("securitypolicyviolation", (e) => { if (/google\.com/.test(e.blockedURI || "")) f.remove(); });
+  };
+  if (!("IntersectionObserver" in window)) return load();
+  const io = new IntersectionObserver((en) => { if (en[0].isIntersecting) { load(); io.disconnect(); } }, { rootMargin: "300px" });
+  io.observe(box);
+})();
+
+/* --- lightbox: portfólio (com setas) e fotos avulsas --- */
+(function () {
+  const lb = $("lb"), n = site.portfolio.length;
+  let cur = null, opener = null, single = false;
+  const show = (src, alt) => { $("lb-media").innerHTML = `<img src="${src}" alt="${esc(alt)}">`; $("lb-caption").textContent = alt; };
+  const go = (i) => { cur = (i + n) % n; show(site.portfolio[cur], L.portfolio[cur]); };
+  function open(btn) { opener = btn; lb.classList.toggle("single", single); lb.hidden = false; document.body.style.overflow = "hidden"; $("lb-close").focus(); }
+  function close() { lb.hidden = true; cur = null; single = false; document.body.style.overflow = ""; opener?.focus(); }
+  $("grid").addEventListener("click", (e) => { const b = e.target.closest(".pf"); if (b) { single = false; go(+b.dataset.i); open(b); } });
+  window.abrirFoto = (src, alt, from) => { single = true; cur = 0; show(src, alt); open(from); };
+  $("reviews").addEventListener("click", (e) => { const b = e.target.closest(".review-photo"); if (b) window.abrirFoto(b.dataset.src, L.rev.foto, b); });
+  lb.addEventListener("click", (e) => { if (e.target === lb || e.target.id === "lb-caption") close(); });
+  $("lb-close").onclick = close;
+  $("lb-prev").onclick = (e) => { e.stopPropagation(); go(cur - 1); };
+  $("lb-next").onclick = (e) => { e.stopPropagation(); go(cur + 1); };
+  addEventListener("keydown", (e) => {
+    if (cur === null) return;
+    if (e.key === "Escape") close();
+    else if (!single && e.key === "ArrowRight") go(cur + 1);
+    else if (!single && e.key === "ArrowLeft") go(cur - 1);
+  });
+})();
+</script>
+</body>
+</html>
