@@ -402,7 +402,7 @@ const site = {
   google: { nota: null, total: null },
   avaliacoes: [],
   /* portfólio — descrições em TXT.*.portfolio, na mesma ordem */
-  portfolio: ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"].map((n) => `assets/elisa-${n}.webp`),
+  portfolio: ["01", "02", "03", "04", "05", "07", "08", "09"].map((n) => `assets/elisa-${n}.webp`), /* cada trabalho aparece uma vez só no site (carrossel + portfólio) */
 };
 
 /* ============ IDIOMAS ============
@@ -439,13 +439,9 @@ const TXT = {
       "Personagens dos filmes do Studio Ghibli caminhando em fila, em linhas finas e pontilhismo no antebraço",
       "Guerreira com elmo alado, escudo e espada, nas costas",
       "Casal de pássaros num galho com flores, em microrrealismo no antebraço",
-      "A Criação de Adão com anotações e geometria no peito, em vista mais aberta",
       "Beija-flor em microrrealismo no peito do pé",
       "Lettering caligráfico em linhas finas ao longo da coluna",
       "Retrato feminino com cocar de penas e armadura, no antebraço",
-      "Rosto de estátua clássica dividido por linhas geométricas, no braço",
-      "Ornamental em linhas finas nas costas, refletido no espelho do estúdio",
-      "Personagens do Studio Ghibli em linhas finas no antebraço, em outro ângulo",
     ],
     t: {}, a: {}, /* lidos da própria página */
   },
@@ -468,13 +464,9 @@ const TXT = {
       "Studio Ghibli characters walking in a line, fine line and dotwork on the forearm",
       "Woman warrior with a winged helmet, shield and sword, on the back",
       "A pair of birds on a flowering branch, micro-realism on the forearm",
-      "The Creation of Adam with notes and geometry on the chest, wider view",
       "Micro-realism hummingbird on the top of the foot",
       "Fine line calligraphic lettering along the spine",
       "Female portrait with a feather headdress and armor, on the forearm",
-      "Classical statue's face split by geometric lines, on the arm",
-      "Fine line ornamental back piece, reflected in the studio mirror",
-      "Studio Ghibli characters in fine line on the forearm, another angle",
     ],
     t: {
       h1: 'Fine line <span class="nw">&amp; micro-realism</span>',
@@ -513,13 +505,9 @@ const TXT = {
       "Personaggi dei film dello Studio Ghibli che camminano in fila, in linee sottili e puntinato sull'avambraccio",
       "Guerriera con elmo alato, scudo e spada, sulla schiena",
       "Coppia di uccellini su un ramo fiorito, in microrealismo sull'avambraccio",
-      "La Creazione di Adamo con appunti e geometrie sul petto, inquadratura più ampia",
       "Colibrì in microrealismo sul collo del piede",
       "Lettering calligrafico in linee sottili lungo la colonna",
       "Ritratto femminile con copricapo di piume e armatura, sull'avambraccio",
-      "Volto di statua classica diviso da linee geometriche, sul braccio",
-      "Ornamentale in linee sottili sulla schiena, riflesso nello specchio dello studio",
-      "Personaggi dello Studio Ghibli in linee sottili sull'avambraccio, da un'altra angolazione",
     ],
     t: {
       h1: 'Linee sottili <span class="nw">&amp; microrealismo</span>',
@@ -558,13 +546,9 @@ const TXT = {
       "Figuren aus Studio-Ghibli-Filmen, die in einer Reihe laufen, in feinen Linien und Dotwork am Unterarm",
       "Kriegerin mit Flügelhelm, Schild und Schwert, auf dem Rücken",
       "Vogelpaar auf einem blühenden Zweig, im Mikrorealismus am Unterarm",
-      "Die Erschaffung Adams mit Notizen und Geometrie auf der Brust, weitere Ansicht",
       "Kolibri im Mikrorealismus auf dem Fussrücken",
       "Kalligrafischer Schriftzug in feinen Linien entlang der Wirbelsäule",
       "Frauenporträt mit Federkopfschmuck und Rüstung, am Unterarm",
-      "Gesicht einer klassischen Statue, durch geometrische Linien geteilt, am Arm",
-      "Ornamentales Rückentattoo in feinen Linien, im Studiospiegel gespiegelt",
-      "Studio-Ghibli-Figuren in feinen Linien am Unterarm, andere Perspektive",
     ],
     t: {
       h1: 'Feine Linien <span class="nw">&amp; Mikrorealismus</span>',
@@ -603,13 +587,9 @@ const TXT = {
       "Personnages des films du Studio Ghibli marchant en file, en traits fins et dotwork sur l'avant-bras",
       "Guerrière au casque ailé, avec bouclier et épée, dans le dos",
       "Couple d'oiseaux sur une branche fleurie, en microréalisme sur l'avant-bras",
-      "La Création d'Adam avec annotations et géométrie sur la poitrine, vue plus large",
       "Colibri en microréalisme sur le dessus du pied",
       "Lettering calligraphique en traits fins le long de la colonne",
       "Portrait féminin avec coiffe de plumes et armure, sur l'avant-bras",
-      "Visage de statue classique coupé par des lignes géométriques, sur le bras",
-      "Pièce ornementale en traits fins dans le dos, reflétée dans le miroir du studio",
-      "Personnages du Studio Ghibli en traits fins sur l'avant-bras, autre angle",
     ],
     t: {
       h1: 'Traits fins <span class="nw">&amp; microréalisme</span>',
@@ -648,13 +628,9 @@ const TXT = {
       "Personajes de las películas de Studio Ghibli caminando en fila, en líneas finas y puntillismo en el antebrazo",
       "Guerrera con yelmo alado, escudo y espada, en la espalda",
       "Pareja de pájaros en una rama con flores, en microrrealismo en el antebrazo",
-      "La creación de Adán con anotaciones y geometría en el pecho, vista más amplia",
       "Colibrí en microrrealismo en el empeine",
       "Lettering caligráfico en líneas finas a lo largo de la columna",
       "Retrato femenino con tocado de plumas y armadura, en el antebrazo",
-      "Rostro de estatua clásica dividido por líneas geométricas, en el brazo",
-      "Ornamental en líneas finas en la espalda, reflejado en el espejo del estudio",
-      "Personajes de Studio Ghibli en líneas finas en el antebrazo, desde otro ángulo",
     ],
     t: {
       h1: 'Líneas finas <span class="nw">y microrrealismo</span>',
